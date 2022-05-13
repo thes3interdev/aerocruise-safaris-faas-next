@@ -1,8 +1,8 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 
-export default function Document() {
+const Document = () => {
 	return (
-		<Html>
+		<Html lang="en">
 			<Head />
 			<body className="flex h-screen flex-col bg-slate-50 font-ubuntu text-slate-500 antialiased">
 				<Main />
@@ -10,4 +10,6 @@ export default function Document() {
 			</body>
 		</Html>
 	);
-}
+};
+
+export default Document;
