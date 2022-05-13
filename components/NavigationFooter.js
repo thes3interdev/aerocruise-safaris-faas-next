@@ -113,7 +113,7 @@ const NavigationFooter = () => {
 						{/** legal section start */}
 						<div>
 							<p className="font-semibold uppercase tracking-wide text-slate-100">
-								Action
+								Legal
 							</p>
 							<ul className="mt-4 space-y-2">
 								{legalLinks.map((link) => (
