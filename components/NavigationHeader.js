@@ -6,7 +6,7 @@ import ActionButtonMobile from './ActionButtonMobile';
 const NavigationHeader = () => {
 	/** declare variables */
 	const menuLinks = [
-		{ name: 'Destination', linkDestination: '/destination' },
+		{ name: 'Destinations', linkDestination: '/destinations' },
 		{ name: 'Experiences', linkDestination: '/experiences' },
 		{ name: 'Camps & Lodges', linkDestination: '/properties' },
 		{ name: 'Blogs', linkDestination: '/blogs' },
@@ -21,7 +21,7 @@ const NavigationHeader = () => {
 				<div className="relative flex items-center justify-between">
 					{/** menu start */}
 					<Link href="/">
-						<a className="ml-2 text-xl font-semibold uppercase tracking-wide text-slate-100">
+						<a className="text-xl font-semibold uppercase tracking-wide text-slate-100">
 							Aerocruise Safaris
 						</a>
 					</Link>
@@ -102,12 +102,12 @@ const NavigationHeader = () => {
 												</li>
 											))}
 
-											{/** booking request mobile action button start */}
+											{/** mobile booking request action button start */}
 											<ActionButtonMobile
 												linkDestination="/booking-request"
 												linkText="Booking Request"
 											/>
-											{/** booking request mobile action button end */}
+											{/** mobile booking request action button end */}
 										</ul>
 									</nav>
 								</div>
