@@ -1,6 +1,6 @@
 const NavigationFooter = () => {
 	return (
-		<footer>
+		<footer className="mt-auto">
 			<h1>Navigation Footer</h1>
 		</footer>
 	);
