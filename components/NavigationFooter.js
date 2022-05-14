@@ -6,7 +6,7 @@ const NavigationFooter = () => {
 		{ name: 'Primary Phone Number : ', contact: ' +254 (0)733 411762' },
 		{ name: 'Alternate Phone Number : ', contact: ' +254 (0)20 6009985' },
 		{ name: 'Mobile Phone Number : ', contact: ' +254 (0)735 479936' },
-		{ name: 'Email Address : ', contact: ' safaris@aerocruise-safaris.co.ke' },
+		{ name: 'Email : ', contact: ' safaris@aerocruise-safaris.co.ke' },
 		{ name: 'Location : ', contact: ' Building 49, Wilson Airport, Nairobi.' },
 	];
 	const informationLinks = [

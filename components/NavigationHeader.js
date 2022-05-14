@@ -67,15 +67,15 @@ const NavigationHeader = () => {
 							<div className="absolute top-0 left-0 w-full">
 								<div className="rounded-lg border bg-slate-50 p-5 shadow-md">
 									<div className="mb-4 flex items-center justify-between">
-										<>
+										<div>
 											<Link href="/" className="inline-flex items-center">
 												<a className="text-xl font-bold uppercase tracking-wide">
 													Aerocruise Safaris
 												</a>
 											</Link>
-										</>
+										</div>
 
-										<>
+										<div>
 											<button onClick={() => setIsMenuOpen(false)}>
 												<svg className="w-5" viewBox="0 0 24 24">
 													<path
@@ -84,7 +84,7 @@ const NavigationHeader = () => {
 													/>
 												</svg>
 											</button>
-										</>
+										</div>
 									</div>
 
 									<nav>
