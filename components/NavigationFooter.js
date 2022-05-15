@@ -3,11 +3,11 @@ import Link from 'next/link';
 const NavigationFooter = () => {
 	/** declare variables */
 	const contactInformation = [
-		{ name: 'Primary Phone Number : ', contact: ' +254 (0)733 411762' },
-		{ name: 'Alternate Phone Number : ', contact: ' +254 (0)20 6009985' },
-		{ name: 'Mobile Phone Number : ', contact: ' +254 (0)735 479936' },
-		{ name: 'Email : ', contact: ' safaris@aerocruise-safaris.co.ke' },
-		{ name: 'Location : ', contact: ' Building 49, Wilson Airport, Nairobi.' },
+		{ name: 'Primary Number :', contact: ' +254 (0)733 411762' },
+		{ name: 'Alternate Number :', contact: ' +254 (0)20 6009985' },
+		{ name: 'Mobile Number :', contact: ' +254 (0)735 479936' },
+		{ name: 'Email :', contact: ' safaris@aerocruise-safaris.co.ke' },
+		{ name: 'Office :', contact: ' Building 49, Wilson Airport, Nairobi' },
 	];
 	const informationLinks = [
 		{ name: 'About Aerocruise', linkDestination: '/about' },
