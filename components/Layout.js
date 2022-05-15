@@ -4,12 +4,12 @@ import NavigationFooter from '../components/NavigationFooter';
 
 const Layout = ({ children }) => {
 	return (
-		<div>
+		<>
 			<Meta />
 			<NavigationHeader />
-			{children}
+			<div className="mt-[80px]">{children}</div>
 			<NavigationFooter />
-		</div>
+		</>
 	);
 };
 

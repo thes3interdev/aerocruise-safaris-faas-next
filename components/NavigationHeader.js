@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import ActionButton from './ActionButton';
-import ActionButtonMobile from './ActionButtonMobile';
 
 const NavigationHeader = () => {
 	/** declare variables */
@@ -13,7 +11,6 @@ const NavigationHeader = () => {
 		{ name: 'About', linkDestination: '/about' },
 	];
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const handleMenuClose = () => setIsMenuOpen(isMenuOpen);
 
 	return (
 		<nav className="fixed inset-x-0 top-0 z-30 bg-sky-800">
@@ -36,7 +33,11 @@ const NavigationHeader = () => {
 						))}
 
 						{/** booking request action button start */}
-						<ActionButton linkDestination="/booking-request" linkText="Booking Request" />
+						<Link href="/booking-request">
+							<a className="rounded-lg bg-emerald-700 px-5 py-3 text-center text-sm font-medium uppercase text-white hover:bg-emerald-500">
+								Booking Request
+							</a>
+						</Link>
 						{/** booking request action button end */}
 					</ul>
 					{/** menu end */}
@@ -69,7 +70,10 @@ const NavigationHeader = () => {
 									<div className="mb-4 flex items-center justify-between">
 										<div>
 											<Link href="/" className="inline-flex items-center">
-												<a className="text-xl font-bold uppercase tracking-wide">
+												<a
+													onClick={() => setIsMenuOpen(false)}
+													className="text-xl font-bold uppercase tracking-wide"
+												>
 													Aerocruise Safaris
 												</a>
 											</Link>
@@ -90,24 +94,25 @@ const NavigationHeader = () => {
 									<nav>
 										<ul className="space-y-4">
 											{menuLinks.map((link) => (
-												<li key={link.name}>
+												<li key={link.name} onClick={() => setIsMenuOpen(false)}>
 													<Link href={link.linkDestination}>
-														<a
-															onClick={handleMenuClose}
-															className="text-lg font-semibold tracking-wider"
-														>
+														<a className="text-lg font-semibold tracking-wider">
 															{link.name}
 														</a>
 													</Link>
 												</li>
 											))}
 
-											{/** mobile booking request action button start */}
-											<ActionButtonMobile
-												linkDestination="/booking-request"
-												linkText="Booking Request"
-											/>
-											{/** mobile booking request action button end */}
+											{/** booking request action button start */}
+											<Link href="/booking-request">
+												<a
+													onClick={() => setIsMenuOpen(false)}
+													className="inline-flex w-full items-center justify-center rounded-lg bg-emerald-700 py-3 px-5 font-medium uppercase text-white hover:bg-emerald-500"
+												>
+													Booking Request
+												</a>
+											</Link>
+											{/** booking request action button end */}
 										</ul>
 									</nav>
 								</div>

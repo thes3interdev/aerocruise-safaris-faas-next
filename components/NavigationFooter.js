@@ -10,8 +10,8 @@ const NavigationFooter = () => {
 		{ name: 'Office :', contact: ' Building 49, Wilson Airport, Nairobi' },
 	];
 	const informationLinks = [
-		{ name: 'About Aerocruise', linkDestination: '/about' },
 		{ name: 'Blogs', linkDestination: '/blogs' },
+		{ name: 'About', linkDestination: '/about' },
 	];
 	const discoverLinks = [
 		{ name: 'Destinations', linkDestination: '/destinations' },
@@ -29,7 +29,7 @@ const NavigationFooter = () => {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<footer className="mt-auto bg-slate-800 py-10">
+		<div className="mt-auto bg-slate-800 py-10">
 			<div className="mx-auto max-w-7xl px-4 pt-10">
 				<div className="row-gap-10 mb-8 grid gap-16 xl:grid-cols-6">
 					{/** contact section start */}
@@ -172,7 +172,7 @@ const NavigationFooter = () => {
 				</div>
 				{/** bottom section end */}
 			</div>
-		</footer>
+		</div>
 	);
 };
 
