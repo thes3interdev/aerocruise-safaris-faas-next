@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
 		<>
 			<Meta />
 			<NavigationHeader />
-			<div className="mt-[80px]">{children}</div>
+			<div className="mt-[75px]">{children}</div>
 			<NavigationFooter />
 		</>
 	);

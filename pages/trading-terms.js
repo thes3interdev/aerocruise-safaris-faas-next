@@ -1,36 +1,11 @@
-import { gql } from '@apollo/client';
 import client from '../lib/ApolloClient';
+import GET_TRADING_TERMS from '../graphql/query/GetTradingTerms';
 import Meta from '../lib/Meta';
 
-/** fetch data at build time */
+/** fetch data at build time and refresh data every 70 minutes */
 export const getStaticProps = async () => {
 	const { data } = await client.query({
-		query: gql`
-			query GetTradingTerms {
-				tradingTerm {
-					data {
-						attributes {
-							hero {
-								hero_image {
-									data {
-										attributes {
-											url
-										}
-									}
-								}
-								header {
-									title
-									subtitle
-								}
-							}
-							content {
-								content
-							}
-						}
-					}
-				}
-			}
-		`,
+		query: GET_TRADING_TERMS,
 	});
 
 	return {
