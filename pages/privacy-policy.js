@@ -2,7 +2,7 @@ import client from '../lib/ApolloClient';
 import GET_PRIVACY_POLICY from '../graphql/query/GetPrivacyPolicy';
 import Meta from '../lib/Meta';
 
-/** fetch data at build time and refresh data every 70 minutes */
+/** fetch data at build time and refresh data every 45 minutes */
 export const getStaticProps = async () => {
 	const { data } = await client.query({
 		query: GET_PRIVACY_POLICY,
@@ -12,7 +12,7 @@ export const getStaticProps = async () => {
 		props: {
 			terms: data.privacyPolicy.data.attributes,
 		},
-		revalidate: 4181,
+		revalidate: 2584,
 	};
 };
 
