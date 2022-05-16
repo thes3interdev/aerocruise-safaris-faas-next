@@ -1,10 +1,11 @@
+import Link from 'next/link';
 import client from '../../lib/ApolloClient';
 import GET_BLOGS_PAGE from '../../graphql/query/GetBlogsPage';
 import Meta from '../../lib/Meta';
 import CallToActionCard from '../../components/CallToActionCard';
 
 /** fetch data at build time and refresh data every 2 minutes */
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 	const { data } = await client.query({
 		query: GET_BLOGS_PAGE,
 	});
@@ -13,7 +14,6 @@ export const getStaticProps = async () => {
 		props: {
 			content: data.blog.data.attributes,
 		},
-		revalidate: 144,
 	};
 };
 
@@ -90,9 +90,9 @@ const Blogs = ({ content }) => {
 			{/** call to action section start */}
 			<CallToActionCard
 				prompt={content.cta.data.attributes.prompt}
-				image={content.cta.data.attributes.featured_image.data.attributes.url}
-				label={content.cta.data.attributes.link.label}
 				href={content.cta.data.attributes.link.href}
+				label={content.cta.data.attributes.link.label}
+				image={content.cta.data.attributes.featured_image.data.attributes.url}
 			/>
 			{/** call to action section end */}
 		</div>
