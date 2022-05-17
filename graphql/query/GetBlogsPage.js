@@ -27,7 +27,7 @@ const GetBlogsPage = gql`
 						data {
 							attributes {
 								prompt
-								featured_image {
+								cover_image {
 									data {
 										attributes {
 											url

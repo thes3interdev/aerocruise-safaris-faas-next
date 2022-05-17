@@ -1,23 +1,30 @@
 import Link from 'next/link';
+import { format, parseISO } from 'date-fns';
 import client from '../../lib/ApolloClient';
 import GET_BLOGS_PAGE from '../../graphql/query/GetBlogsPage';
+import GET_BLOG_POSTS from '../../graphql/query/GetBlogPosts';
 import Meta from '../../lib/Meta';
-import CallToActionCard from '../../components/CallToActionCard';
 
-/** fetch data at build time and refresh data every 2 minutes */
-export const getServerSideProps = async () => {
-	const { data } = await client.query({
+/** fetch data at build time */
+export const getStaticProps = async () => {
+	const { data: pageData } = await client.query({
 		query: GET_BLOGS_PAGE,
+	});
+
+	const { data: postsData } = await client.query({
+		query: GET_BLOG_POSTS,
 	});
 
 	return {
 		props: {
-			content: data.blog.data.attributes,
+			page: pageData.blog.data.attributes,
+			posts: postsData.posts.data,
 		},
+		revalidate: 89,
 	};
 };
 
-const Blogs = ({ content }) => {
+const Blogs = ({ page, posts }) => {
 	return (
 		<div>
 			{/** title bar start */}
@@ -28,16 +35,16 @@ const Blogs = ({ content }) => {
 			<section
 				className="h-96 w-full bg-cover bg-center bg-no-repeat"
 				style={{
-					backgroundImage: `url(${content.hero.hero_image.data.attributes.url})`,
+					backgroundImage: `url(${page.hero.hero_image.data.attributes.url})`,
 				}}
 			>
 				<div className="flex h-full w-full items-center justify-center bg-slate-900 bg-opacity-50">
 					<div className="text-center text-slate-100">
 						<h1 className="mb-2 text-2xl font-semibold uppercase lg:text-3xl">
-							{content.hero.header.title}
+							{page.hero.header.title}
 						</h1>
 						<h3 className="b-4 text-lg font-medium uppercase tracking-wider lg:text-xl">
-							{content.hero.header.subtitle}
+							{page.hero.header.subtitle}
 						</h3>
 					</div>
 				</div>
@@ -49,7 +56,7 @@ const Blogs = ({ content }) => {
 				<div className="mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-4xl">
 					<div>
 						<p className="mb-4 inline-block rounded-full bg-emerald-800 px-3 py-px text-xs font-semibold uppercase tracking-wider text-slate-100">
-							{content.content.label}
+							{page.content.label}
 						</p>
 					</div>
 					<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
@@ -76,24 +83,88 @@ const Blogs = ({ content }) => {
 									height="21"
 								/>
 							</svg>
-							<span className="relative">{content.content.title}</span>
+							<span className="relative">{page.content.title}</span>
 						</span>
 					</h2>
-					<p className="text-base md:text-lg">{content.content.subtitle}</p>
+					<p className="text-base md:text-lg">{page.content.subtitle}</p>
 				</div>
 			</section>
 			{/** content header section end */}
 
 			{/** content blog grid section start */}
+			<div className="mx-auto max-w-6xl transform px-4 pb-8 sm:px-6 lg:mt-24 lg:px-8 lg:pb-16">
+				<div className="mt-12 mb-8 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:space-y-0">
+					{posts.map((post) => {
+						return (
+							<div key={post.attributes.slug}>
+								<Link href={`/blogs/${post.attributes.slug}`}>
+									<a className="block rounded-lg bg-slate-50 shadow-lg">
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<img
+											className="h-48 w-full rounded-t-lg object-cover"
+											src={post.attributes.cover_image.data.attributes.url}
+											alt={post.attributes.title}
+										/>
+										<div className="flex flex-col p-6">
+											<h2 className="font-semibold uppercase line-clamp-1">
+												{post.attributes.title}
+											</h2>
+											<p className="mt-3 line-clamp-3">{post.attributes.excerpt}</p>
+											<hr className="divider my-5 w-full" />
+											<div className="flex items-center justify-between">
+												<div className="flex items-center space-x-3">
+													{/* eslint-disable-next-line @next/next/no-img-element */}
+													<img
+														className="h-8 w-8 rounded-full"
+														src={
+															post.attributes.author.data.attributes.photo.data.attributes
+																.url
+														}
+														alt={post.attributes.author.data.attributes.name}
+													/>
+													<h4>{post.attributes.author.data.attributes.name}</h4>
+												</div>
+												<p className="text-sm">
+													{format(parseISO(post.attributes.publishedAt), 'MMMM do, yyyy')}
+												</p>
+											</div>
+										</div>
+									</a>
+								</Link>
+							</div>
+						);
+					})}
+				</div>
+			</div>
 			{/** content blog grid section end */}
 
 			{/** call to action section start */}
-			<CallToActionCard
-				prompt={content.cta.data.attributes.prompt}
-				href={content.cta.data.attributes.link.href}
-				label={content.cta.data.attributes.link.label}
-				image={content.cta.data.attributes.featured_image.data.attributes.url}
-			/>
+			<section className="mx-auto max-w-7xl">
+				<div className="m-8 flex flex-col rounded-lg bg-slate-50 shadow-lg lg:flex-row">
+					<div className="order-2 flex h-64 w-full items-center justify-center px-5 py-8 lg:order-1 lg:w-1/2">
+						<div className="max-w-xl p-4">
+							<h3 className="text-center text-2xl font-medium tracking-wide text-slate-800">
+								{page.cta.data.attributes.prompt}
+							</h3>
+							<div className="mt-6 flex flex-col space-y-3 lg:flex-row lg:space-y-0">
+								<Link href={page.cta.data.attributes.link.href}>
+									<a className="inline-flex w-full items-center justify-center rounded-lg bg-emerald-700 py-3 px-5 text-lg font-medium uppercase text-white hover:bg-emerald-500">
+										{page.cta.data.attributes.link.label}
+									</a>
+								</Link>
+							</div>
+						</div>
+					</div>
+					<div className="order-1 h-64 w-full lg:order-2 lg:w-1/2">
+						{/* eslint-disable-next-line @next/next/no-img-element */}
+						<img
+							className="h-full w-full rounded-t-lg object-cover object-center lg:rounded-t-none lg:rounded-tr-lg lg:rounded-br-lg"
+							src={page.cta.data.attributes.cover_image.data.attributes.url}
+							alt="Call To Action Featured Image"
+						/>
+					</div>
+				</div>
+			</section>
 			{/** call to action section end */}
 		</div>
 	);

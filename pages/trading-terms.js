@@ -2,7 +2,7 @@ import client from '../lib/ApolloClient';
 import GET_TRADING_TERMS from '../graphql/query/GetTradingTerms';
 import Meta from '../lib/Meta';
 
-/** fetch data at build time and refresh data every 45 minutes */
+/** fetch data at build time */
 export const getStaticProps = async () => {
 	const { data } = await client.query({
 		query: GET_TRADING_TERMS,
@@ -12,7 +12,7 @@ export const getStaticProps = async () => {
 		props: {
 			terms: data.tradingTerm.data.attributes,
 		},
-		revalidate: 2584,
+		revalidate: 89,
 	};
 };
 
