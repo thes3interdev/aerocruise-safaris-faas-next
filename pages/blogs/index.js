@@ -10,7 +10,6 @@ export const getStaticProps = async () => {
 	const { data: pageData } = await client.query({
 		query: GET_BLOGS_PAGE,
 	});
-
 	const { data: postsData } = await client.query({
 		query: GET_BLOG_POSTS,
 	});
