@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
-const GetBlogPostsSlug = gql`
-	query GetBlogPostsSlug {
+const GetBlogPostSlug = gql`
+	query GetBlogPostSlug {
 		posts {
 			data {
 				attributes {
@@ -12,4 +12,4 @@ const GetBlogPostsSlug = gql`
 	}
 `;
 
-export default GetBlogPostsSlug;
+export default GetBlogPostSlug;

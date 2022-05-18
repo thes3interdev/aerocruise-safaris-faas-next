@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
 import client from '../../lib/ApolloClient';
-import GET_BLOG_POSTS_SLUG from '../../graphql/query/GetBlogPostsSlug';
+import GET_BLOG_POST_SLUG from '../../graphql/query/GetBlogPostSlug';
 import GET_BLOG_POST from '../../graphql/query/GetBlogPost';
 import Meta from '../../lib/Meta';
 
 /**define a list of paths to be statically generated */
 export const getStaticPaths = async () => {
 	const { data: postsData } = await client.query({
-		query: GET_BLOG_POSTS_SLUG,
+		query: GET_BLOG_POST_SLUG,
 	});
 	const paths = postsData.posts.data.map((post) => {
 		return {
@@ -18,7 +18,9 @@ export const getStaticPaths = async () => {
 
 	return {
 		paths,
-		fallback: false,
+
+		/** server-render pages on-demand if the path doesn't exist. */
+		fallback: 'blocking',
 	};
 };
 
@@ -67,7 +69,7 @@ const Blog = ({ post }) => {
 			{/** content section start */}
 			<section className="mx-auto max-w-4xl px-2 pt-8 pb-16">
 				{/** content section - excerpt start */}
-				<h3 className="px-3 pb-6 text-lg">{post.excerpt}</h3>
+				<h3 className="px-3 pb-6 text-center text-lg">{post.excerpt}</h3>
 				{/** content section - excerpt end */}
 
 				<hr className="divider my-5 w-full" />
