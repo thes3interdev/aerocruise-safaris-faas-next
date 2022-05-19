@@ -12,7 +12,7 @@ export const getStaticProps = async () => {
 		props: {
 			terms: data.tradingTerm.data.attributes,
 		},
-		revalidate: 89,
+		revalidate: 60,
 	};
 };
 

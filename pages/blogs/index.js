@@ -19,7 +19,7 @@ export const getStaticProps = async () => {
 			page: pageData.blog.data.attributes,
 			posts: postsData.posts.data,
 		},
-		revalidate: 89,
+		revalidate: 60,
 	};
 };
 
