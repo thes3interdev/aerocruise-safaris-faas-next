@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
 import client from '../../lib/ApolloClient';
-import GET_BLOGS_PAGE from '../../graphql/query/GetBlogsPage';
+import GET_BLOGS_PAGE from '../../graphql/query/GetBlogPostsPage';
 import GET_BLOG_POSTS from '../../graphql/query/GetBlogPosts';
 import Meta from '../../lib/Meta';
 
@@ -133,7 +133,6 @@ const Blogs = ({ page, posts }) => {
 					})}
 				</div>
 			</div>
-
 			{/** blog grid section end */}
 
 			{/** call to action section start */}

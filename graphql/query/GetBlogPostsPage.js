@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
-const GetBlogsPage = gql`
-	query GetBlogsPage {
+const GetBlogPostsPage = gql`
+	query GetBlogPostsPage {
 		informationPage(where: { pageTitle: "Blogs Page" }) {
 			heroSection {
 				heroImage {
@@ -29,4 +29,4 @@ const GetBlogsPage = gql`
 	}
 `;
 
-export default GetBlogsPage;
+export default GetBlogPostsPage;
