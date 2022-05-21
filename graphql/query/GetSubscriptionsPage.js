@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
-const GetBookingRequestPage = gql`
-	query GetBookingRequestPage {
-		collectionPage(where: { pageTitle: "Booking Request Page" }) {
+const GetSubscriptionsPage = gql`
+	query GetSubscriptionsPage {
+		collectionPage(where: { pageTitle: "Subscriptions Page" }) {
 			heroSection {
 				heroImage {
 					url
@@ -29,4 +29,4 @@ const GetBookingRequestPage = gql`
 	}
 `;
 
-export default GetBookingRequestPage;
+export default GetSubscriptionsPage;

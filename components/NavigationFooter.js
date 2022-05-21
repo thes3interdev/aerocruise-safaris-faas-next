@@ -20,7 +20,7 @@ const NavigationFooter = () => {
 	];
 	const actionLinks = [
 		{ name: 'Booking Request', linkDestination: '/booking-request' },
-		{ name: 'Subscribe', linkDestination: '/subscribe' },
+		{ name: 'Subscribe', linkDestination: '/subscriptions' },
 	];
 	const legalLinks = [
 		{ name: 'Privacy Policy', linkDestination: '/privacy-policy' },

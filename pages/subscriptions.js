@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import client from '../lib/ApolloClient';
-import GET_BOOKING_REQUEST_PAGE from '../graphql/query/GetBookingRequestPage';
+import GET_SUBSCRIPTIONS_PAGE from '../graphql/query/GetSubscriptionsPage';
 import Meta from '../lib/Meta';
 
 /** fetch data at build time */
 export const getStaticProps = async () => {
 	const { data } = await client.query({
-		query: GET_BOOKING_REQUEST_PAGE,
+		query: GET_SUBSCRIPTIONS_PAGE,
 	});
 
 	return {
@@ -17,11 +17,11 @@ export const getStaticProps = async () => {
 	};
 };
 
-const BookingRequest = ({ page }) => {
+const Subscriptions = ({ page }) => {
 	return (
 		<div>
 			{/** title bar start */}
-			<Meta title="Booking Request | An Authentic African Experience | Aerocruise Safaris" />
+			<Meta title="Subscriptions | An Authentic African Experience | Aerocruise Safaris" />
 			{/** title bar end */}
 
 			{/** hero section start */}
@@ -55,9 +55,9 @@ const BookingRequest = ({ page }) => {
 			</article>
 			{/** content section end */}
 
-			{/** booking request form start */}
+			{/** subscriptions form start */}
 
-			{/** booking request form end */}
+			{/** subscriptions form end */}
 
 			{/** call to action section start */}
 			<section className="mx-auto max-w-7xl">
@@ -91,4 +91,4 @@ const BookingRequest = ({ page }) => {
 	);
 };
 
-export default BookingRequest;
+export default Subscriptions;
