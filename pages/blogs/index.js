@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import { format, parseISO } from 'date-fns';
 import client from '../../lib/ApolloClient';
 import GET_BLOGS_PAGE from '../../graphql/query/GetBlogsPage';
+import GET_BLOG_POSTS from '../../graphql/query/GetBlogPosts';
 import Meta from '../../lib/Meta';
 
 /** fetch data at build time */
@@ -9,15 +11,20 @@ export const getStaticProps = async () => {
 		query: GET_BLOGS_PAGE,
 	});
 
+	const { data: posts } = await client.query({
+		query: GET_BLOG_POSTS,
+	});
+
 	return {
 		props: {
 			page: page.informationPage,
+			posts: posts.blogPosts,
 		},
 		revalidate: 60,
 	};
 };
 
-const Blogs = ({ page }) => {
+const Blogs = ({ page, posts }) => {
 	return (
 		<div>
 			{/** title bar start */}
@@ -85,6 +92,47 @@ const Blogs = ({ page }) => {
 			{/** header section end */}
 
 			{/** blog grid section start */}
+			<div className="mx-auto max-w-6xl transform px-4 pb-8 sm:px-6 lg:mt-24 lg:px-8 lg:pb-16">
+				<div className="mt-12 mb-8 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:space-y-0">
+					{posts.map((post) => {
+						return (
+							<div key={post.slug}>
+								<Link href={`/blogs/${post.slug}`}>
+									<a className="block rounded-lg bg-slate-50 shadow-lg">
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<img
+											className="h-48 w-full rounded-t-lg object-cover"
+											src={post.coverImage.url}
+											alt={post.title}
+										/>
+										<div className="flex flex-col p-6">
+											<h2 className="font-semibold uppercase text-sky-800 line-clamp-1">
+												{post.title}
+											</h2>
+											<p className="mt-3 line-clamp-3">{post.excerpt}</p>
+											<hr className="divider my-5 w-full" />
+											<div className="flex items-center justify-between">
+												<div className="flex items-center space-x-3">
+													{/* eslint-disable-next-line @next/next/no-img-element */}
+													<img
+														className="h-8 w-8 rounded-full"
+														src={post.blogAuthor.photo.url}
+														alt={post.blogAuthor.name}
+													/>
+													<h4>{post.blogAuthor.name}</h4>
+												</div>
+												<p className="text-sm">
+													{format(parseISO(post.publishedAt), 'MMMM do, yyyy')}
+												</p>
+											</div>
+										</div>
+									</a>
+								</Link>
+							</div>
+						);
+					})}
+				</div>
+			</div>
 
 			{/** blog grid section end */}
 
