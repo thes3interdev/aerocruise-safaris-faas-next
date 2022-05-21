@@ -1,16 +1,16 @@
 import client from '../lib/ApolloClient';
-import GET_TRADING_TERMS from '../graphql/query/GetTradingTerms';
+import GET_TRADING_TERMS_PAGE from '../graphql/query/GetTradingTermsPage';
 import Meta from '../lib/Meta';
 
 /** fetch data at build time */
 export const getStaticProps = async () => {
 	const { data } = await client.query({
-		query: GET_TRADING_TERMS,
+		query: GET_TRADING_TERMS_PAGE,
 	});
 
 	return {
 		props: {
-			terms: data.tradingTerm.data.attributes,
+			terms: data.page,
 		},
 		revalidate: 60,
 	};
@@ -27,16 +27,16 @@ const TradingTerms = ({ terms }) => {
 			<section
 				className="h-96 w-full bg-cover bg-center bg-no-repeat"
 				style={{
-					backgroundImage: `url(${terms.hero.hero_image.data.attributes.url})`,
+					backgroundImage: `url(${terms.heroSection.heroImage.url})`,
 				}}
 			>
 				<div className="flex h-full w-full items-center justify-center bg-slate-900 bg-opacity-50">
 					<div className="text-center text-slate-100">
 						<h1 className="mb-2 text-2xl font-semibold uppercase lg:text-3xl">
-							{terms.hero.header.title}
+							{terms.heroSection.title}
 						</h1>
 						<h3 className="b-4 text-lg font-medium uppercase tracking-wider lg:text-xl">
-							{terms.hero.header.subtitle}
+							{terms.heroSection.subtitle}
 						</h3>
 					</div>
 				</div>
@@ -47,7 +47,7 @@ const TradingTerms = ({ terms }) => {
 			<article className="mx-auto max-w-4xl transform space-y-5 px-4 pt-8 pb-8">
 				<div
 					dangerouslySetInnerHTML={{
-						__html: terms.content.content,
+						__html: terms.contentSection.content.html,
 					}}
 					className="prose max-w-none prose-headings:text-sky-800 prose-a:text-blue-800"
 				/>

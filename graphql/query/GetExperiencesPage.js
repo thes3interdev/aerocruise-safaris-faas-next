@@ -26,7 +26,6 @@ const GetExperiencesPage = gql`
 					cta {
 						data {
 							attributes {
-								prompt
 								cover_image {
 									data {
 										attributes {
@@ -34,6 +33,7 @@ const GetExperiencesPage = gql`
 										}
 									}
 								}
+								prompt
 								link {
 									label
 									href
