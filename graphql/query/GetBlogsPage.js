@@ -2,45 +2,27 @@ import { gql } from '@apollo/client';
 
 const GetBlogsPage = gql`
 	query GetBlogsPage {
-		blog {
-			data {
-				attributes {
-					hero {
-						hero_image {
-							data {
-								attributes {
-									url
-								}
-							}
-						}
-						header {
-							title
-							subtitle
-						}
-					}
-					content {
-						label
-						title
-						subtitle
-					}
-					cta {
-						data {
-							attributes {
-								prompt
-								cover_image {
-									data {
-										attributes {
-											url
-										}
-									}
-								}
-								link {
-									label
-									href
-								}
-							}
-						}
-					}
+		informationPage(where: { pageTitle: "Blogs Page" }) {
+			heroSection {
+				heroImage {
+					url
+				}
+				title
+				subtitle
+			}
+			headerSection {
+				label
+				title
+				subtitle
+			}
+			callToAction {
+				prompt
+				coverImage {
+					url
+				}
+				link {
+					label
+					href
 				}
 			}
 		}
