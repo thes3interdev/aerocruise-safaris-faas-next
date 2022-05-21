@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { format, parseISO } from 'date-fns';
 import client from '../../lib/ApolloClient';
 import GET_DESTINATIONS_PAGE from '../../graphql/query/GetDestinationsPage';
 import GET_DESTINATIONS from '../../graphql/query/GetDestinations';
