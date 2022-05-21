@@ -109,7 +109,8 @@ const Blogs = ({ page, posts }) => {
 											<h2 className="font-semibold uppercase text-sky-800 line-clamp-1">
 												{post.title}
 											</h2>
-											<p className="mt-3 line-clamp-3">{post.excerpt}</p>
+											<hr className="divider my-5 w-full" />
+											<p className="mt-3 mb-3 line-clamp-3">{post.excerpt}</p>
 											<hr className="divider my-5 w-full" />
 											<div className="flex items-center justify-between">
 												<div className="flex items-center space-x-3">

@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import { format, parseISO } from 'date-fns';
 import client from '../../lib/ApolloClient';
 import GET_DESTINATIONS_PAGE from '../../graphql/query/GetDestinationsPage';
+import GET_DESTINATIONS from '../../graphql/query/GetDestinations';
 import Meta from '../../lib/Meta';
 
 /** fetch data at build time */
@@ -9,15 +11,20 @@ export const getStaticProps = async () => {
 		query: GET_DESTINATIONS_PAGE,
 	});
 
+	const { data: destinations } = await client.query({
+		query: GET_DESTINATIONS,
+	});
+
 	return {
 		props: {
 			page: page.informationPage,
+			destinations: destinations.destinations,
 		},
 		revalidate: 60,
 	};
 };
 
-const Destinations = ({ page }) => {
+const Destinations = ({ page, destinations }) => {
 	return (
 		<div>
 			{/** title bar start */}
@@ -85,7 +92,33 @@ const Destinations = ({ page }) => {
 			{/** header section end */}
 
 			{/** destinations grid section start */}
-
+			<div className="mx-auto max-w-6xl transform px-4 pb-8 sm:px-6 lg:mt-24 lg:px-8 lg:pb-16">
+				<div className="mt-12 mb-8 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:space-y-0">
+					{destinations.map((destination) => {
+						return (
+							<div key={destination.slug}>
+								<Link href={`/destinations/${destination.slug}`}>
+									<a className="block rounded-lg bg-slate-50 shadow-lg">
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<img
+											className="h-48 w-full rounded-t-lg object-cover"
+											src={destination.coverImage.url}
+											alt={destination.name}
+										/>
+										<div className="flex flex-col p-6">
+											<h2 className="font-semibold uppercase text-sky-800 line-clamp-1">
+												{destination.name}
+											</h2>
+											<hr className="divider my-5 w-full" />
+											<p className="mt-3 mb-3 line-clamp-4">{destination.excerpt}</p>
+										</div>
+									</a>
+								</Link>
+							</div>
+						);
+					})}
+				</div>
+			</div>
 			{/** destinations grid section end */}
 
 			{/** call to action section start */}
