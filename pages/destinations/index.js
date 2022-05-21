@@ -17,7 +17,7 @@ export const getStaticProps = async () => {
 	};
 };
 
-const Experiences = ({ page }) => {
+const Destinations = ({ page }) => {
 	return (
 		<div>
 			{/** title bar start */}
@@ -120,4 +120,4 @@ const Experiences = ({ page }) => {
 	);
 };
 
-export default Experiences;
+export default Destinations;
