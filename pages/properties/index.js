@@ -21,7 +21,7 @@ const Properties = ({ page }) => {
 	return (
 		<div>
 			{/** title bar start */}
-			<Meta title="Blogs | An Authentic African Experience | Aerocruise Safaris" />
+			<Meta title="Camps, Hotels and Lodges | An Authentic African Experience | Aerocruise Safaris" />
 			{/** title bar end */}
 
 			{/** hero section start */}
