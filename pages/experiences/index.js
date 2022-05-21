@@ -84,9 +84,9 @@ const Experiences = ({ page }) => {
 			</section>
 			{/** header section end */}
 
-			{/** property grid section start */}
+			{/** experiences grid section start */}
 
-			{/** property grid section end */}
+			{/** experiences grid section end */}
 
 			{/** call to action section start */}
 			<section className="mx-auto max-w-7xl">
