@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import client from '../../lib/ApolloClient';
 import GET_PROPERTIES_PAGE from '../../graphql/query/GetPropertiesPage';
+import GET_PROPERTIES from '../../graphql/query/GetProperties';
 import Meta from '../../lib/Meta';
 
 /** fetch data at build time */
@@ -9,15 +10,20 @@ export const getStaticProps = async () => {
 		query: GET_PROPERTIES_PAGE,
 	});
 
+	const { data: properties } = await client.query({
+		query: GET_PROPERTIES,
+	});
+
 	return {
 		props: {
 			page: page.informationPage,
+			properties: properties.properties,
 		},
 		revalidate: 60,
 	};
 };
 
-const Properties = ({ page }) => {
+const Properties = ({ page, properties }) => {
 	return (
 		<div>
 			{/** title bar start */}
@@ -85,7 +91,34 @@ const Properties = ({ page }) => {
 			{/** header section end */}
 
 			{/** property grid section start */}
-
+			<div className="mx-auto max-w-6xl transform px-4 pb-8 sm:px-6 lg:mt-24 lg:px-8 lg:pb-16">
+				<div className="mt-12 mb-8 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:space-y-0">
+					{properties.map((property) => {
+						return (
+							<div key={property.slug}>
+								<Link href={`/properties/${property.slug}`}>
+									<a className="block rounded-lg bg-slate-50 shadow-lg">
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<img
+											className="h-48 w-full rounded-t-lg object-cover"
+											src={property.coverImage.url}
+											alt={property.name}
+										/>
+										<div className="flex flex-col p-6">
+											<h2 className="font-semibold uppercase text-sky-800 line-clamp-1">
+												{property.name}
+											</h2>
+											<hr className="divider my-5 w-full" />
+											<p className="mt-3 mb-3 line-clamp-3">{property.excerpt}</p>
+											<hr className="divider my-5 w-full" />
+										</div>
+									</a>
+								</Link>
+							</div>
+						);
+					})}
+				</div>
+			</div>
 			{/** property grid section end */}
 
 			{/** call to action section start */}
