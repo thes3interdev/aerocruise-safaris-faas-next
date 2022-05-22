@@ -17,6 +17,7 @@ const GetDestination = gql`
 				html
 			}
 			gallery {
+				id
 				url
 			}
 			callToAction {

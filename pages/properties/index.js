@@ -26,7 +26,7 @@ const Properties = ({ page }) => {
 
 			{/** hero section start */}
 			<section
-				className="h-96 w-full bg-cover bg-center bg-no-repeat"
+				className="h-[450px] w-full bg-cover bg-center bg-no-repeat"
 				style={{
 					backgroundImage: `url(${page.heroSection.heroImage.url})`,
 				}}

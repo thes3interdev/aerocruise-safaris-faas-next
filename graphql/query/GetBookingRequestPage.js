@@ -10,10 +10,10 @@ const GetBookingRequestPage = gql`
 				title
 				subtitle
 			}
-			contentSection {
-				content {
-					html
-				}
+			headerSection {
+				label
+				title
+				subtitle
 			}
 			callToAction {
 				coverImage {

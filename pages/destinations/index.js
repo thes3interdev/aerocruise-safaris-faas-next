@@ -32,7 +32,7 @@ const Destinations = ({ page, destinations }) => {
 
 			{/** hero section start */}
 			<section
-				className="h-96 w-full bg-cover bg-center bg-no-repeat"
+				className="h-[450px] w-full bg-cover bg-center bg-no-repeat"
 				style={{
 					backgroundImage: `url(${page.heroSection.heroImage.url})`,
 				}}
@@ -110,6 +110,7 @@ const Destinations = ({ page, destinations }) => {
 											</h2>
 											<hr className="divider my-5 w-full" />
 											<p className="mt-3 mb-3 line-clamp-4">{destination.excerpt}</p>
+											<hr className="divider my-5 w-full" />
 										</div>
 									</a>
 								</Link>

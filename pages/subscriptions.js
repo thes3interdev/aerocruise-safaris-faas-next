@@ -26,7 +26,7 @@ const Subscriptions = ({ page }) => {
 
 			{/** hero section start */}
 			<section
-				className="h-96 w-full bg-cover bg-center bg-no-repeat"
+				className="h-[450px] w-full bg-cover bg-center bg-no-repeat"
 				style={{
 					backgroundImage: `url(${page.heroSection.heroImage.url})`,
 				}}
@@ -44,16 +44,45 @@ const Subscriptions = ({ page }) => {
 			</section>
 			{/** hero section end */}
 
-			{/** content section start */}
-			<article className="mx-auto max-w-4xl transform space-y-5 px-4 pt-8 pb-8">
-				<div
-					dangerouslySetInnerHTML={{
-						__html: page.contentSection.content.html,
-					}}
-					className="prose max-w-none prose-headings:text-sky-800 prose-a:text-blue-800"
-				/>
-			</article>
-			{/** content section end */}
+			{/** header section start */}
+			<section className="mx-auto max-w-4xl px-8 pt-10">
+				<div className="mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-4xl">
+					<div>
+						<p className="mb-4 inline-block rounded-full bg-emerald-800 px-3 py-px text-xs font-semibold uppercase tracking-wider text-slate-100">
+							{page.headerSection.label}
+						</p>
+					</div>
+					<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
+						<span className="relative inline-block">
+							<svg
+								viewBox="0 0 52 24"
+								fillRule="currentColor"
+								className="absolute top-0 left-0 z-0 -mt-8 -ml-20 hidden w-32 text-slate-800 sm:block lg:-ml-28 lg:-mt-10 lg:w-32"
+							>
+								<defs>
+									<pattern
+										id="db164e35-2a0e-4c0f-ab05-f14edc6d4d30"
+										x="0"
+										y="0"
+										width=".135"
+										height=".30"
+									>
+										<circle cx="1" cy="1" r=".7" />
+									</pattern>
+								</defs>
+								<rect
+									fill="url(#db164e35-2a0e-4c0f-ab05-f14edc6d4d30)"
+									width="55"
+									height="21"
+								/>
+							</svg>
+							<span className="relative">{page.headerSection.title}</span>
+						</span>
+					</h2>
+					<p className="text-base md:text-lg">{page.headerSection.subtitle}</p>
+				</div>
+			</section>
+			{/** header section end */}
 
 			{/** subscriptions form start */}
 
