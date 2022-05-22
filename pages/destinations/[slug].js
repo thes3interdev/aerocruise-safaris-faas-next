@@ -102,7 +102,7 @@ const Destination = ({ destination }) => {
 				<h3 className="py-5 text-center text-2xl font-bold text-sky-800">
 					Sights of {destination.name}
 				</h3>
-				<div className="mx-auto columns-3xs gap-3 pt-2">
+				<div className="mx-auto columns-3xs gap-5 pt-2">
 					{destination.gallery.map((image) => (
 						<figure key={image.id} className="py-3 [break-inside:avoid]">
 							{/* eslint-disable-next-line @next/next/no-img-element */}
@@ -122,10 +122,12 @@ const Destination = ({ destination }) => {
 					<div>
 						<Link href="/experiences">
 							<a className="block max-w-sm space-y-3 rounded-lg border border-slate-200 bg-sky-100 p-5 text-center shadow-md hover:bg-sky-200">
-								<h5 className="mb-2 text-xl font-medium text-sky-800">Experiences</h5>
+								<h5 className="mb-2 text-xl font-medium text-sky-800">
+									Camps, Hotels & Lodges
+								</h5>
 								<p className="tracking-wide">
-									Each moment on an Aerocruise safari is sublime, but it is the
-									experiences stand out.
+									We have an excellent network of camps, lodges and hotels, selected
+									according to our exacting standards.
 								</p>
 							</a>
 						</Link>
@@ -133,12 +135,10 @@ const Destination = ({ destination }) => {
 					<div>
 						<Link href="/properties">
 							<a className="block max-w-sm space-y-3 rounded-lg border border-slate-200 bg-sky-100 p-5 text-center shadow-md hover:bg-sky-200">
-								<h5 className="mb-2 text-xl font-medium text-sky-800">
-									Camps, Hotels & Lodges
-								</h5>
+								<h5 className="mb-2 text-xl font-medium text-sky-800">Experiences</h5>
 								<p className="tracking-wide">
-									We have an excellent network of camps, lodges and hotels, selected
-									according to our exacting standards.
+									Each moment on an Aerocruise safari is sublime, but it is the
+									experiences stand out.
 								</p>
 							</a>
 						</Link>
