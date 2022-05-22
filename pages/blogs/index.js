@@ -96,7 +96,7 @@ const Blogs = ({ page, posts }) => {
 				<div className="mt-12 mb-8 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:space-y-0">
 					{posts.map((post) => {
 						return (
-							<div key={post.slug}>
+							<div key={post.id}>
 								<Link href={`/blogs/${post.slug}`}>
 									<a className="block rounded-lg bg-slate-50 shadow-lg">
 										{/* eslint-disable-next-line @next/next/no-img-element */}

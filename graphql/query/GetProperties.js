@@ -3,6 +3,7 @@ import { gql } from '@apollo/client';
 const GetProperties = gql`
 	query GetProperties {
 		properties {
+			id
 			name
 			slug
 			excerpt

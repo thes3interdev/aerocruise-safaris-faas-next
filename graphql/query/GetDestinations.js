@@ -3,6 +3,7 @@ import { gql } from '@apollo/client';
 const GetDestinations = gql`
 	query GetDestinations {
 		destinations {
+			id
 			name
 			slug
 			coverImage {

@@ -120,7 +120,7 @@ const Destination = ({ destination }) => {
 				</h3>
 				<div className="grid grid-cols-1 gap-x-5 gap-y-5 px-5 pt-8 lg:grid-cols-2">
 					<div>
-						<Link href="/experiences">
+						<Link href="/properties">
 							<a className="block max-w-sm space-y-3 rounded-lg border border-slate-200 bg-sky-100 p-5 text-center shadow-md hover:bg-sky-200">
 								<h5 className="mb-2 text-xl font-medium text-sky-800">
 									Camps, Hotels & Lodges
@@ -133,7 +133,7 @@ const Destination = ({ destination }) => {
 						</Link>
 					</div>
 					<div>
-						<Link href="/properties">
+						<Link href="/experiences">
 							<a className="block max-w-sm space-y-3 rounded-lg border border-slate-200 bg-sky-100 p-5 text-center shadow-md hover:bg-sky-200">
 								<h5 className="mb-2 text-xl font-medium text-sky-800">Experiences</h5>
 								<p className="tracking-wide">

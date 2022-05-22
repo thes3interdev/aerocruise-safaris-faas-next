@@ -95,7 +95,7 @@ const Properties = ({ page, properties }) => {
 				<div className="mt-12 mb-8 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:space-y-0">
 					{properties.map((property) => {
 						return (
-							<div key={property.slug}>
+							<div key={property.id}>
 								<Link href={`/properties/${property.slug}`}>
 									<a className="block rounded-lg bg-slate-50 shadow-lg">
 										{/* eslint-disable-next-line @next/next/no-img-element */}

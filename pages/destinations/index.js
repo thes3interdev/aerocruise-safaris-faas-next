@@ -95,7 +95,7 @@ const Destinations = ({ page, destinations }) => {
 				<div className="mt-12 mb-8 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:space-y-0">
 					{destinations.map((destination) => {
 						return (
-							<div key={destination.slug}>
+							<div key={destination.id}>
 								<Link href={`/destinations/${destination.slug}`}>
 									<a className="block rounded-lg bg-slate-50 shadow-lg">
 										{/* eslint-disable-next-line @next/next/no-img-element */}
