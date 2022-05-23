@@ -116,14 +116,14 @@ const Destination = ({ destination }) => {
 			{/** miscellaneous section bottom start */}
 			<section className="mx-auto max-w-4xl px-3 pt-4 pb-4">
 				<h3 className="py-5 text-center text-2xl font-bold text-sky-800">
-					Camps, Hotels, Lodges & Experiences in {destination.name}
+					Camps, Hotels, Lodges &amp; Experiences in {destination.name}
 				</h3>
 				<div className="grid grid-cols-1 gap-x-5 gap-y-5 px-5 pt-8 lg:grid-cols-2">
 					<div>
 						<Link href="/properties">
 							<a className="block max-w-sm space-y-3 rounded-lg border border-slate-200 bg-sky-100 p-5 text-center shadow-md hover:bg-sky-200">
 								<h5 className="mb-2 text-xl font-medium text-sky-800">
-									Camps, Hotels & Lodges
+									Camps, Hotels &amp; Lodges
 								</h5>
 								<p className="tracking-wide">
 									We have an excellent network of camps, lodges and hotels, selected
