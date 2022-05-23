@@ -70,7 +70,7 @@ const Property = ({ property }) => {
 			<section className="mx-auto max-w-4xl px-2 pt-8 pb-8">
 				<hr className="divider my-5 w-full" />
 				<div className="flex items-center justify-center py-4 px-3">
-					<h3 className="text-lg font-semibold uppercase">
+					<h3 className="text-lg font-semibold uppercase text-sky-800">
 						Location: {property.location.name}
 					</h3>
 				</div>
