@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import NumberFormat from 'react-number-format';
 import client from '../../lib/ApolloClient';
 import GET_EXPERIENCES_PAGE from '../../graphql/query/GetExperiencesPage';
+import GET_EXPERIENCES from '../../graphql/query/GetExperiences';
 import Meta from '../../lib/Meta';
 
 /** fetch data at build time */
@@ -9,15 +11,20 @@ export const getStaticProps = async () => {
 		query: GET_EXPERIENCES_PAGE,
 	});
 
+	const { data: experiences } = await client.query({
+		query: GET_EXPERIENCES,
+	});
+
 	return {
 		props: {
 			page: page.informationPage,
+			experiences: experiences.experiences,
 		},
 		revalidate: 34,
 	};
 };
 
-const Experiences = ({ page }) => {
+const Experiences = ({ page, experiences }) => {
 	return (
 		<div>
 			{/** title bar start */}
@@ -85,7 +92,51 @@ const Experiences = ({ page }) => {
 			{/** header section end */}
 
 			{/** experiences grid section start */}
-
+			<div className="mx-auto max-w-6xl transform px-4 pb-8 sm:px-6 lg:mt-24 lg:px-8 lg:pb-16">
+				<div className="mt-12 mb-8 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:space-y-0">
+					{experiences.map((experience) => {
+						return (
+							<div key={experience.id}>
+								<Link href={`/experiences/${experience.slug}`}>
+									<a className="block rounded-lg bg-slate-50 shadow-lg">
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<img
+											className="h-48 w-full rounded-t-lg object-cover"
+											src={experience.coverImage.url}
+											alt={experience.title}
+										/>
+										<div className="flex flex-col p-6">
+											<h2 className="font-semibold uppercase text-sky-800 line-clamp-1">
+												{experience.name}
+											</h2>
+											<hr className="divider my-5 w-full" />
+											<p className="mt-3 mb-3 line-clamp-3">{experience.excerpt}</p>
+											<hr className="divider my-5 w-full" />
+											<div className="flex items-center justify-between">
+												<div className="flex items-center space-x-3">
+													<p>From:</p>
+													<p>
+														<NumberFormat
+															value={experience.price}
+															displayType={'text'}
+															thousandSeparator={true}
+															prefix={'$'}
+														/>
+													</p>
+												</div>
+												<div className="flex items-center space-x-3">
+													<p>Duration:</p>
+													<p>{experience.duration}</p>
+												</div>
+											</div>
+										</div>
+									</a>
+								</Link>
+							</div>
+						);
+					})}
+				</div>
+			</div>
 			{/** experiences grid section end */}
 
 			{/** call to action section start */}

@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-const HomePage = gql`
+const GetHomePage = gql`
 	query GetHomePage {
 		informationPage(where: { pageTitle: "Home Page" }) {
 			heroSection {
@@ -29,4 +29,4 @@ const HomePage = gql`
 	}
 `;
 
-export default HomePage;
+export default GetHomePage;

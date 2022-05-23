@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const GetDestinationSlug = gql`
-	query GetDestinations {
+	query GetDestinationSlug {
 		destinations {
 			slug
 		}

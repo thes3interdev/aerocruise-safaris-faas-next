@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const GetProperty = gql`
-	query GetProperties($slug: String!) {
+	query GetProperty($slug: String!) {
 		properties(where: { slug: $slug }) {
 			id
 			name
@@ -20,7 +20,9 @@ const GetProperty = gql`
 			amenities {
 				id
 				title
-				description
+				description {
+					html
+				}
 			}
 			location {
 				... on Destination {
