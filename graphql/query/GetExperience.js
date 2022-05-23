@@ -10,9 +10,13 @@ const GetExperience = gql`
 				url
 			}
 			excerpt
+			description {
+				html
+			}
 			price
 			duration
 			gallery {
+				id
 				url
 			}
 			itenerary {
@@ -38,6 +42,21 @@ const GetExperience = gql`
 				title
 				description {
 					html
+				}
+			}
+			location {
+				... on Destination {
+					name
+				}
+			}
+			callToAction {
+				coverImage {
+					url
+				}
+				prompt
+				link {
+					label
+					href
 				}
 			}
 		}
