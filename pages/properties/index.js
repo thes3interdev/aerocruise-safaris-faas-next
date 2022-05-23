@@ -109,7 +109,7 @@ const Properties = ({ page, properties }) => {
 												{property.name}
 											</h2>
 											<hr className="divider my-5 w-full" />
-											<p className="mt-3 mb-3 line-clamp-3">{property.excerpt}</p>
+											<p className="mt-3 mb-3 line-clamp-1">{property.excerpt}</p>
 											<hr className="divider my-5 w-full" />
 										</div>
 									</a>
