@@ -99,9 +99,13 @@ const Destination = ({ destination }) => {
 
 			{/** image gallery section start */}
 			<section className="mx-auto max-w-4xl px-3 pt-4 pb-4">
-				<h3 className="py-5 text-center text-2xl font-bold text-sky-800">
-					Sights of {destination.name}
-				</h3>
+				<hr className="divider my-5 w-full" />
+				<div className="flex items-center justify-center py-4 px-3">
+					<h3 className="text-lg font-semibold uppercase text-sky-800">
+						Sights of {destination.name}
+					</h3>
+				</div>
+				<hr className="divider my-5 w-full" />
 				<div className="mx-auto columns-3xs gap-5 pt-2">
 					{destination.gallery.map((image) => (
 						<figure key={image.id} className="py-3 [break-inside:avoid]">
@@ -115,9 +119,13 @@ const Destination = ({ destination }) => {
 
 			{/** miscellaneous section bottom start */}
 			<section className="mx-auto max-w-4xl px-3 pt-4 pb-4">
-				<h3 className="py-5 text-center text-2xl font-bold text-sky-800">
-					Camps, Hotels, Lodges &amp; Experiences in {destination.name}
-				</h3>
+				<hr className="divider my-5 w-full" />
+				<div className="flex items-center justify-center py-4 px-3">
+					<h3 className="text-lg font-semibold uppercase text-sky-800">
+						Camps, Hotels, Lodges &amp; Experiences in {destination.name}
+					</h3>
+				</div>
+				<hr className="divider my-5 w-full" />
 				<div className="grid grid-cols-1 gap-x-5 gap-y-5 px-5 pt-8 lg:grid-cols-2">
 					<div>
 						<Link href="/properties">
