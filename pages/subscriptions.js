@@ -13,7 +13,7 @@ export const getStaticProps = async () => {
 		props: {
 			page: data.collectionPage,
 		},
-		revalidate: 60,
+		revalidate: 55,
 	};
 };
 

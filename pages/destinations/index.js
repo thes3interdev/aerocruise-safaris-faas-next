@@ -19,7 +19,7 @@ export const getStaticProps = async () => {
 			page: page.informationPage,
 			destinations: destinations.destinations,
 		},
-		revalidate: 60,
+		revalidate: 34,
 	};
 };
 

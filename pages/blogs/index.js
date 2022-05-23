@@ -20,7 +20,7 @@ export const getStaticProps = async () => {
 			page: page.informationPage,
 			posts: posts.blogPosts,
 		},
-		revalidate: 60,
+		revalidate: 34,
 	};
 };
 
