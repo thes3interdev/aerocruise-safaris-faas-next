@@ -83,7 +83,7 @@ const Experience = ({ experience }) => {
 			{/** hero section end */}
 
 			{/** content section - content start */}
-			<section className="mx-auto max-w-4xl transform space-y-5 px-3 pt-8 pb-8">
+			<section className="mx-auto max-w-5xl transform space-y-5 px-3 pt-8 pb-8">
 				<hr className="divider my-5 w-full" />
 				<div className="flex items-center justify-center py-4 px-3">
 					<h3 className="text-xl font-semibold uppercase text-sky-800">
@@ -101,7 +101,7 @@ const Experience = ({ experience }) => {
 			{/** content section - content end */}
 
 			{/** image gallery section start */}
-			<section className="mx-auto max-w-4xl px-3 pt-4 pb-4">
+			<section className="mx-auto max-w-5xl px-3 pt-4 pb-4">
 				<hr className="divider my-5 w-full" />
 				<div className="flex items-center justify-center py-4 px-3">
 					<h3 className="text-xl font-semibold uppercase text-sky-800">
@@ -121,15 +121,15 @@ const Experience = ({ experience }) => {
 			{/** image gallery section end */}
 
 			{/** experience itenerary start */}
-			<section className="mx-auto max-w-4xl px-3 pt-4 pb-4">
+			<section className="mx-auto max-w-5xl px-3 pt-4 pb-4">
 				<hr className="divider my-5 w-full" />
 				<div className="flex items-center justify-center py-4 px-3">
 					<h3 className="text-xl font-semibold uppercase text-sky-800">
-						A Taste of What to Expect
+						{experience.name} Itenerary
 					</h3>
 				</div>
 				<hr className="divider my-5 w-full" />
-				<div className="rounded-lg border-2 p-3">
+				<div className="mt-12 rounded-lg border p-3">
 					{experience.itenerary.map((item) => (
 						<Disclosure key={item.id}>
 							{({ open }) => (
@@ -157,6 +157,133 @@ const Experience = ({ experience }) => {
 				</div>
 			</section>
 			{/** experience itenerary end */}
+
+			{/** experience properties start */}
+			<section className="mx-auto max-w-5xl px-3 pt-4 pb-4">
+				<hr className="divider my-5 w-full" />
+				<div className="flex items-center justify-center py-4 px-3">
+					<h3 className="text-xl font-semibold uppercase text-sky-800">
+						Stay here on The {experience.name}
+					</h3>
+				</div>
+				<hr className="divider my-5 w-full" />
+				<div className="mt-12 mb-8 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:space-y-0">
+					{experience.properties.map((property) => {
+						return (
+							<div key={property.id}>
+								<Link href={`/properties/${property.slug}`}>
+									<a className="block rounded-lg bg-slate-50 shadow-lg">
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<img
+											className="h-48 w-full rounded-t-lg object-cover"
+											src={property.coverImage.url}
+											alt={property.name}
+										/>
+										<div className="flex flex-col p-6">
+											<h2 className="font-semibold uppercase text-sky-800 line-clamp-1">
+												{property.name}
+											</h2>
+											<hr className="divider my-5 w-full" />
+											<p className="mt-3 mb-3 line-clamp-1">{property.excerpt}</p>
+											<hr className="divider my-5 w-full" />
+										</div>
+									</a>
+								</Link>
+							</div>
+						);
+					})}
+				</div>
+			</section>
+			{/** experience properties end */}
+
+			{/** experience availability start */}
+			<section className="mx-auto max-w-5xl px-3 pt-4 pb-4">
+				<hr className="divider my-5 w-full" />
+				<div className="flex items-center justify-center py-4 px-3">
+					<h3 className="text-xl font-semibold uppercase text-sky-800">
+						Experience Availabile From{' '}
+						<NumberFormat
+							value={experience.price}
+							displayType={'text'}
+							thousandSeparator={true}
+							prefix={'USD '}
+						/>{' '}
+						For {experience.duration}
+					</h3>
+				</div>
+				<hr className="divider my-5 w-full" />
+				<div className="mt-12 rounded-lg border p-3">
+					{experience.availability.map((item) => (
+						<Disclosure key={item.id}>
+							{({ open }) => (
+								<div>
+									<Disclosure.Button className="flex w-full justify-between rounded-lg bg-slate-50 px-4 py-2 text-left text-sm font-medium text-sky-900 hover:bg-sky-200 focus:outline-none focus-visible:ring focus-visible:ring-sky-500 focus-visible:ring-opacity-75">
+										<span className="text-lg">{item.description}</span>
+										<ChevronUpIcon
+											className={`${
+												open ? 'rotate-180 transform' : ''
+											} h-6 w-6 text-sky-800`}
+										/>
+									</Disclosure.Button>
+									<Disclosure.Panel className="px-5 pt-5 pb-3">
+										<div className="flex justify-between">
+											<div>{item.description}</div>
+											<div>
+												<NumberFormat
+													value={item.price}
+													displayType={'text'}
+													thousandSeparator={true}
+													prefix={item.currency}
+												/>
+											</div>
+										</div>
+									</Disclosure.Panel>
+								</div>
+							)}
+						</Disclosure>
+					))}
+				</div>
+			</section>
+			{/** experience availability end */}
+
+			{/** experience information start */}
+			<section className="mx-auto max-w-5xl px-3 pt-4 pb-4">
+				<hr className="divider my-5 w-full" />
+				<div className="flex items-center justify-center py-4 px-3">
+					<h3 className="text-xl font-semibold uppercase text-sky-800">
+						Miscellaneous Information
+					</h3>
+				</div>
+				<hr className="divider my-5 w-full" />
+				<div className="mt-12 rounded-lg border p-3">
+					{experience.miscellaneousInformation.map((info) => (
+						<Disclosure key={info.id}>
+							{({ open }) => (
+								<div>
+									<Disclosure.Button className="flex w-full justify-between rounded-lg bg-slate-50 px-4 py-2 text-left text-sm font-medium text-sky-900 hover:bg-sky-200 focus:outline-none focus-visible:ring focus-visible:ring-sky-500 focus-visible:ring-opacity-75">
+										<span className="text-lg">{info.title}</span>
+										<ChevronUpIcon
+											className={`${
+												open ? 'rotate-180 transform' : ''
+											} h-6 w-6 text-sky-800`}
+										/>
+									</Disclosure.Button>
+									<Disclosure.Panel className="px-5 pt-5 pb-3">
+										<div
+											dangerouslySetInnerHTML={{
+												__html: info.description.html,
+											}}
+											className="prose max-w-none text-base"
+										/>
+									</Disclosure.Panel>
+								</div>
+							)}
+						</Disclosure>
+					))}
+				</div>
+				<hr className="divider mt-20 mb-10 w-full" />
+			</section>
+			{/** experience information end */}
 
 			{/** call to action section start */}
 			<section className="mx-auto max-w-7xl">

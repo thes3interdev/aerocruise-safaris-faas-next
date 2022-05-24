@@ -66,7 +66,7 @@ const Destination = ({ destination }) => {
 			{/** hero section end */}
 
 			{/** information section top start */}
-			<section className="mx-auto max-w-4xl px-2 pt-8 pb-8">
+			<section className="mx-auto max-w-5xl px-2 pt-8 pb-8">
 				<div className="flex flex-col items-center p-3 tracking-wide md:flex-row">
 					{/* eslint-disable-next-line @next/next/no-img-element */}
 					<img
@@ -87,7 +87,7 @@ const Destination = ({ destination }) => {
 			{/** information section top end */}
 
 			{/** description section start */}
-			<section className="mx-auto max-w-4xl transform space-y-5 px-3 pt-4 pb-4">
+			<section className="mx-auto max-w-5xl transform space-y-5 px-3 pt-4 pb-4">
 				<div
 					dangerouslySetInnerHTML={{
 						__html: destination.description.html,
@@ -98,7 +98,7 @@ const Destination = ({ destination }) => {
 			{/** description section end */}
 
 			{/** image gallery section start */}
-			<section className="mx-auto max-w-4xl px-3 pt-4 pb-4">
+			<section className="mx-auto max-w-5xl px-3 pt-4 pb-4">
 				<hr className="divider my-5 w-full" />
 				<div className="flex items-center justify-center py-4 px-3">
 					<h3 className="text-lg font-semibold uppercase text-sky-800">
@@ -118,7 +118,7 @@ const Destination = ({ destination }) => {
 			{/** image gallery section end */}
 
 			{/** miscellaneous section bottom start */}
-			<section className="mx-auto max-w-4xl px-3 pt-4 pb-4">
+			<section className="mx-auto max-w-5xl px-3 pt-4 pb-4">
 				<hr className="divider my-5 w-full" />
 				<div className="flex items-center justify-center py-4 px-3">
 					<h3 className="text-lg font-semibold uppercase text-sky-800">

@@ -69,7 +69,7 @@ const BlogPost = ({ post }) => {
 			{/** hero section end */}
 
 			{/** content section start */}
-			<section className="mx-auto max-w-4xl px-2 pt-8 pb-16">
+			<section className="mx-auto max-w-5xl px-2 pt-8 pb-16">
 				{/** content section - excerpt start */}
 				<h3 className="px-3 pb-6 text-center text-lg">{post.excerpt}</h3>
 				{/** content section - excerpt end */}
@@ -77,7 +77,7 @@ const BlogPost = ({ post }) => {
 				<hr className="divider my-5 w-full" />
 
 				{/** content section - author name plate top start */}
-				<section className="flex items-center justify-between py-4 px-3">
+				<section className="flex max-w-5xl items-center justify-between py-4 px-3">
 					<div className="flex items-center space-x-3">
 						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
@@ -94,7 +94,7 @@ const BlogPost = ({ post }) => {
 				<hr className="divider my-5 w-full" />
 
 				{/** content section - content start */}
-				<section className="mx-auto max-w-4xl transform space-y-5 px-3 pt-8 pb-8">
+				<section className="mx-auto max-w-5xl transform space-y-5 px-3 pt-8 pb-8">
 					<div
 						dangerouslySetInnerHTML={{ __html: post.content.html }}
 						className="prose max-w-none prose-headings:text-sky-800 prose-a:text-blue-800"
@@ -105,7 +105,7 @@ const BlogPost = ({ post }) => {
 				<hr className="divider my-5 w-full" />
 
 				{/** content section - author name plate top start */}
-				<section className="flex items-center justify-between py-4 px-3">
+				<section className="flex max-w-5xl items-center justify-between py-4 px-3">
 					<div className="flex items-center space-x-3">
 						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img

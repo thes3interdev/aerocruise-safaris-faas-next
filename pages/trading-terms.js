@@ -44,7 +44,7 @@ const TradingTerms = ({ page }) => {
 			{/** hero section end */}
 
 			{/** content section start */}
-			<article className="mx-auto max-w-4xl transform space-y-5 px-4 pt-8 pb-8">
+			<article className="mx-auto max-w-5xl transform space-y-5 px-4 pt-8 pb-8">
 				<div
 					dangerouslySetInnerHTML={{
 						__html: page.contentSection.content.html,

@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const GetExperience = gql`
-	query GetExperience($slug: String!) {
+	query GetExperiences($slug: String!) {
 		experiences(where: { slug: $slug }) {
 			id
 			name
@@ -26,11 +26,6 @@ const GetExperience = gql`
 					html
 				}
 			}
-			rates {
-				id
-				description
-				price
-			}
 			availability {
 				id
 				description
@@ -45,11 +40,25 @@ const GetExperience = gql`
 				}
 			}
 			location {
+				__typename
 				... on Destination {
 					name
 				}
 			}
+			properties {
+				__typename
+				... on Property {
+					id
+					name
+					slug
+					coverImage {
+						url
+					}
+					excerpt
+				}
+			}
 			callToAction {
+				__typename
 				coverImage {
 					url
 				}

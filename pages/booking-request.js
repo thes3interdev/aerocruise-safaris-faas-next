@@ -45,7 +45,7 @@ const BookingRequest = ({ page }) => {
 			{/** hero section end */}
 
 			{/** header section start */}
-			<section className="mx-auto max-w-4xl px-8 pt-10">
+			<section className="mx-auto max-w-5xl px-8 pt-10">
 				<div className="mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-4xl">
 					<div>
 						<p className="mb-4 inline-block rounded-full bg-emerald-800 px-3 py-px text-xs font-semibold uppercase tracking-wider text-slate-100">
