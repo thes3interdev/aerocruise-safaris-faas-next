@@ -414,7 +414,10 @@ const Subscriptions = ({ page }) => {
 								/>
 							</div>
 						</div>
-						<button type="submit" className="navigation-button-wide mt-2">
+						<button
+							type="submit"
+							className="m-2 inline-flex w-full items-center justify-center rounded-lg bg-emerald-700 py-3 px-5 font-medium uppercase text-white hover:bg-emerald-500"
+						>
 							Subscribe
 						</button>
 						<p className="m-2 text-center text-xs">
