@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const GetExperience = gql`
-	query GetExperiences($slug: String!) {
+	query GetExperience($slug: String!) {
 		experiences(where: { slug: $slug }) {
 			id
 			name

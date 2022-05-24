@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import NumberFormat from 'react-number-format';
+import { Disclosure } from '@headlessui/react';
+import { ChevronUpIcon } from '@heroicons/react/solid';
 import client from '../../lib/ApolloClient';
 import GET_EXPERIENCE_SLUG from '../../graphql/query/GetExperienceSlug';
 import GET_EXPERIENCE from '../../graphql/query/GetExperience';
@@ -84,7 +86,7 @@ const Experience = ({ experience }) => {
 			<section className="mx-auto max-w-4xl transform space-y-5 px-3 pt-8 pb-8">
 				<hr className="divider my-5 w-full" />
 				<div className="flex items-center justify-center py-4 px-3">
-					<h3 className="text-lg font-semibold uppercase text-sky-800">
+					<h3 className="text-xl font-semibold uppercase text-sky-800">
 						Your Journey at a Glance
 					</h3>
 				</div>
@@ -102,7 +104,7 @@ const Experience = ({ experience }) => {
 			<section className="mx-auto max-w-4xl px-3 pt-4 pb-4">
 				<hr className="divider my-5 w-full" />
 				<div className="flex items-center justify-center py-4 px-3">
-					<h3 className="text-lg font-semibold uppercase text-sky-800">
+					<h3 className="text-xl font-semibold uppercase text-sky-800">
 						Sights of The {experience.name}
 					</h3>
 				</div>
@@ -117,6 +119,44 @@ const Experience = ({ experience }) => {
 				</div>
 			</section>
 			{/** image gallery section end */}
+
+			{/** experience itenerary start */}
+			<section className="mx-auto max-w-4xl px-3 pt-4 pb-4">
+				<hr className="divider my-5 w-full" />
+				<div className="flex items-center justify-center py-4 px-3">
+					<h3 className="text-xl font-semibold uppercase text-sky-800">
+						A Taste of What to Expect
+					</h3>
+				</div>
+				<hr className="divider my-5 w-full" />
+				<div className="rounded-lg border-2 p-3">
+					{experience.itenerary.map((item) => (
+						<Disclosure key={item.id}>
+							{({ open }) => (
+								<div>
+									<Disclosure.Button className="flex w-full justify-between rounded-lg bg-slate-50 px-4 py-2 text-left text-sm font-medium text-sky-900 hover:bg-sky-200 focus:outline-none focus-visible:ring focus-visible:ring-sky-500 focus-visible:ring-opacity-75">
+										<span className="text-lg">{item.title}</span>
+										<ChevronUpIcon
+											className={`${
+												open ? 'rotate-180 transform' : ''
+											} h-6 w-6 text-sky-800`}
+										/>
+									</Disclosure.Button>
+									<Disclosure.Panel className="px-5 pt-5 pb-3">
+										<div
+											dangerouslySetInnerHTML={{
+												__html: item.description.html,
+											}}
+											className="prose max-w-none text-base"
+										/>
+									</Disclosure.Panel>
+								</div>
+							)}
+						</Disclosure>
+					))}
+				</div>
+			</section>
+			{/** experience itenerary end */}
 
 			{/** call to action section start */}
 			<section className="mx-auto max-w-7xl">
