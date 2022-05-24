@@ -416,7 +416,7 @@ const Subscriptions = ({ page }) => {
 						</div>
 						<button
 							type="submit"
-							className="m-2 inline-flex w-full items-center justify-center rounded-lg bg-emerald-700 py-3 px-5 font-medium uppercase text-white hover:bg-emerald-500"
+							className="mt-2 mb-2 inline-flex w-full items-center justify-center rounded-lg bg-emerald-700 py-3 px-5 font-medium uppercase text-white hover:bg-emerald-500"
 						>
 							Subscribe
 						</button>
