@@ -24,4 +24,4 @@ const CreateSubscriber = gql`
 	}
 `;
 
-export { CreateSubscriber };
+export default CreateSubscriber;

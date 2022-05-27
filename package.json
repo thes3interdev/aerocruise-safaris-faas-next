@@ -1,7 +1,7 @@
 {
-	"name": "starter-next-tailwind",
+	"name": "aerocruise-safaris-faas-next",
 	"version": "1.0.0",
-	"description": "Starter Template for Next.js with Tailwind CSS.",
+	"description": "Aerocruise Safaris web presence solution frontend environment.",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",

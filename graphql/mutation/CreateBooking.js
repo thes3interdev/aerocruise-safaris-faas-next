@@ -39,4 +39,4 @@ const CreateBooking = gql`
 	}
 `;
 
-export { CreateBooking };
+export default CreateBooking;
