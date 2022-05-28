@@ -180,14 +180,6 @@ const Home = ({ page }) => {
 												className="prose max-w-none text-sm prose-headings:text-sky-800 prose-a:text-blue-800"
 											/>
 											<hr className="divider my-5 w-full" />
-											<div className="flex items-center justify-between">
-												<div className="flex items-center space-x-3">
-													<h4 className="font-semibold">{review.guestName}</h4>
-												</div>
-												<p className="text-sm">
-													{format(parseISO(review.travelDate), 'MMMM, yyyy')}
-												</p>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -197,7 +189,7 @@ const Home = ({ page }) => {
 					<div className="mx-auto mt-10 flex justify-center">
 						<Link href={'/reviews'}>
 							<a className="rounded-lg bg-emerald-700 px-5 py-3 text-center text-sm font-medium uppercase text-white hover:bg-emerald-500">
-								See More Reviews
+								More Reviews
 							</a>
 						</Link>
 					</div>
@@ -210,34 +202,39 @@ const Home = ({ page }) => {
 				<div className="mx-auto max-w-6xl transform px-4 pb-8 sm:px-6 lg:mt-24 lg:px-8 lg:pb-16">
 					<div className="mt-8 mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-4xl">
 						<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
-							Read Our Stories
+							Explore Our Blog
 						</h2>
 					</div>
 					<div className="mb-8 grid grid-cols-1 gap-5 lg:grid-cols-3 lg:space-y-0">
 						{page.blogPosts.map((post) => {
 							return (
 								<div key={post.id}>
-									<Link href={'/blogs'}>
-										<a className="block rounded-lg bg-slate-50 shadow-lg">
-											{/* eslint-disable-next-line @next/next/no-img-element */}
-											<img
-												className="h-48 w-full rounded-t-lg object-cover"
-												src={post.coverImage.url}
-												alt={post.title}
-											/>
-											<div className="flex flex-col p-6">
-												<h2 className="font-semibold uppercase text-sky-800 line-clamp-1">
-													{post.title}
-												</h2>
-												<hr className="divider my-5 w-full" />
-												<p className="mt-3 mb-3 line-clamp-3">{post.excerpt}</p>
-												<hr className="divider my-5 w-full" />
-											</div>
-										</a>
-									</Link>
+									<div className="block rounded-lg bg-slate-50 shadow-lg">
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<img
+											className="h-48 w-full rounded-t-lg object-cover"
+											src={post.coverImage.url}
+											alt={post.title}
+										/>
+										<div className="flex flex-col p-6">
+											<h2 className="font-semibold uppercase text-sky-800 line-clamp-1">
+												{post.title}
+											</h2>
+											<hr className="divider my-5 w-full" />
+											<p className="mt-3 mb-3 line-clamp-3">{post.excerpt}</p>
+											<hr className="divider my-5 w-full" />
+										</div>
+									</div>
 								</div>
 							);
 						})}
+					</div>
+					<div className="mx-auto mt-10 flex justify-center">
+						<Link href={'/blogs'}>
+							<a className="rounded-lg bg-emerald-700 px-5 py-3 text-center text-sm font-medium uppercase text-white hover:bg-emerald-500">
+								More Blogs
+							</a>
+						</Link>
 					</div>
 				</div>
 			</section>
