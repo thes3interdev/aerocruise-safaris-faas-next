@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 const GetHomePage = gql`
 	query GetHomePage {
-		informationPage(where: { pageTitle: "Home Page" }) {
+		marketingPages(where: { pageTitle: "Home Page" }) {
 			heroSection {
 				heroImage {
 					url
@@ -14,6 +14,44 @@ const GetHomePage = gql`
 				label
 				title
 				subtitle
+			}
+			destinations {
+				id
+				name
+				coverImage {
+					url
+				}
+			}
+			whyAerocruise {
+				id
+				coverImage {
+					url
+				}
+				title
+				description
+			}
+			guestReviews {
+				id
+				guestName
+				destination {
+					id
+					name
+					coverImage {
+						url
+					}
+				}
+				travelDate
+				review {
+					html
+				}
+			}
+			blogPosts {
+				id
+				title
+				coverImage {
+					url
+				}
+				excerpt
 			}
 			callToAction {
 				prompt
