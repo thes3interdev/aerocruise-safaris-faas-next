@@ -86,8 +86,8 @@ const Home = ({ page }) => {
 			{/** header section end */}
 
 			{/** destination section start */}
-			<section className="bg-slate-100 p-10">
-				<div className="mx-auto flex max-w-7xl flex-col px-8 pb-10">
+			<section className="bg-slate-100 p-3">
+				<div className="mx-auto max-w-6xl transform px-4 pb-8 sm:px-6 lg:mt-24 lg:px-8 lg:pb-16">
 					<div className="mt-8 mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-4xl">
 						<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
 							Our Destinations
@@ -121,8 +121,8 @@ const Home = ({ page }) => {
 			{/** destination section end */}
 
 			{/** why travel section start */}
-			<section className="p-10">
-				<div className="mx-auto flex max-w-7xl flex-col px-8 pb-10">
+			<section className="p-3">
+				<div className="mx-auto max-w-7xl transform px-4 pb-8 sm:px-6 lg:mt-24 lg:px-8 lg:pb-16">
 					<div className="mt-8 mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-4xl">
 						<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
 							Why Travel with Aerocruise
@@ -155,8 +155,8 @@ const Home = ({ page }) => {
 			{/** why travel section end */}
 
 			{/** guest reviews section start */}
-			<section className="bg-slate-100 p-10">
-				<div className="mx-auto flex max-w-7xl flex-col px-8 pb-10">
+			<section className="bg-slate-100 p-3">
+				<div className="mx-auto max-w-6xl transform px-4 pb-8 sm:px-6 lg:mt-24 lg:px-8 lg:pb-16">
 					<div className="mt-8 mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-4xl">
 						<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
 							Guest Reviews
@@ -166,49 +166,54 @@ const Home = ({ page }) => {
 						{page.guestReviews.map((review) => {
 							return (
 								<div key={review.id}>
-									<Link href={'/reviews'}>
-										<a className="block rounded-lg bg-slate-50 shadow-lg">
-											{/* eslint-disable-next-line @next/next/no-img-element */}
-											<img
-												className="h-[150px] w-full rounded-t-lg object-cover"
-												src={review.destination.coverImage.url}
-												alt={review.destination.name}
+									<div className="block rounded-lg bg-slate-50 shadow-lg">
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<img
+											className="h-[150px] w-full rounded-t-lg object-cover"
+											src={review.destination.coverImage.url}
+											alt={review.destination.name}
+										/>
+										<div className="flex flex-col p-6">
+											<hr className="divider my-5 w-full" />
+											<div
+												dangerouslySetInnerHTML={{ __html: review.review.html }}
+												className="prose max-w-none text-sm prose-headings:text-sky-800 prose-a:text-blue-800"
 											/>
-											<div className="flex flex-col p-6">
-												<hr className="divider my-5 w-full" />
-												<div
-													dangerouslySetInnerHTML={{ __html: review.review.html }}
-													className="prose max-w-none text-sm prose-headings:text-sky-800 prose-a:text-blue-800"
-												/>
-												<hr className="divider my-5 w-full" />
-												<div className="flex items-center justify-between">
-													<div className="flex items-center space-x-3">
-														<h4 className="font-semibold">{review.guestName}</h4>
-													</div>
-													<p className="text-sm">
-														{format(parseISO(review.travelDate), 'MMMM, yyyy')}
-													</p>
+											<hr className="divider my-5 w-full" />
+											<div className="flex items-center justify-between">
+												<div className="flex items-center space-x-3">
+													<h4 className="font-semibold">{review.guestName}</h4>
 												</div>
+												<p className="text-sm">
+													{format(parseISO(review.travelDate), 'MMMM, yyyy')}
+												</p>
 											</div>
-										</a>
-									</Link>
+										</div>
+									</div>
 								</div>
 							);
 						})}
+					</div>
+					<div className="mx-auto mt-10 flex justify-center">
+						<Link href={'/reviews'}>
+							<a className="rounded-lg bg-emerald-700 px-5 py-3 text-center text-sm font-medium uppercase text-white hover:bg-emerald-500">
+								See More Reviews
+							</a>
+						</Link>
 					</div>
 				</div>
 			</section>
 			{/** guest reviews section end */}
 
 			{/** blog posts section start */}
-			<section className="p-10">
-				<div className="mx-auto flex max-w-6xl flex-col px-8 pb-10">
+			<section className="p-3">
+				<div className="mx-auto max-w-6xl transform px-4 pb-8 sm:px-6 lg:mt-24 lg:px-8 lg:pb-16">
 					<div className="mt-8 mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-4xl">
 						<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
 							Read Our Stories
 						</h2>
 					</div>
-					<div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:space-y-0">
+					<div className="mb-8 grid grid-cols-1 gap-5 lg:grid-cols-3 lg:space-y-0">
 						{page.blogPosts.map((post) => {
 							return (
 								<div key={post.id}>
@@ -239,7 +244,7 @@ const Home = ({ page }) => {
 			{/** blog posts section end */}
 
 			{/** call to action section start */}
-			<section className="bg-slate-100 p-10">
+			<section className="bg-slate-100 p-3">
 				<div className="mx-auto max-w-7xl">
 					<div className="m-8 flex flex-col rounded-lg bg-slate-50 shadow-lg lg:flex-row">
 						<div className="order-2 flex h-64 w-full items-center justify-center px-5 py-8 lg:order-1 lg:w-1/2">
