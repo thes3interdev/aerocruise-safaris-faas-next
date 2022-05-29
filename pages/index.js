@@ -116,6 +116,13 @@ const Home = ({ page }) => {
 							);
 						})}
 					</div>
+					<div className="mx-auto mt-10 flex justify-center">
+						<Link href={'/destinations'}>
+							<a className="rounded-lg bg-emerald-700 px-5 py-3 text-center text-sm font-medium uppercase text-white hover:bg-emerald-500">
+								Explore Destinations
+							</a>
+						</Link>
+					</div>
 				</div>
 			</section>
 			{/** destination section end */}
@@ -166,22 +173,24 @@ const Home = ({ page }) => {
 						{page.guestReviews.map((review) => {
 							return (
 								<div key={review.id}>
-									<div className="block rounded-lg bg-slate-50 shadow-lg">
-										{/* eslint-disable-next-line @next/next/no-img-element */}
-										<img
-											className="h-[150px] w-full rounded-t-lg object-cover"
-											src={review.destination.coverImage.url}
-											alt={review.destination.name}
-										/>
-										<div className="flex flex-col p-6">
-											<hr className="divider my-5 w-full" />
-											<div
-												dangerouslySetInnerHTML={{ __html: review.review.html }}
-												className="prose max-w-none text-sm prose-headings:text-sky-800 prose-a:text-blue-800"
+									<Link href={'/reviews'}>
+										<a className="block rounded-lg bg-slate-50 shadow-lg">
+											{/* eslint-disable-next-line @next/next/no-img-element */}
+											<img
+												className="h-[150px] w-full rounded-t-lg object-cover"
+												src={review.destination.coverImage.url}
+												alt={review.destination.name}
 											/>
-											<hr className="divider my-5 w-full" />
-										</div>
-									</div>
+											<div className="flex flex-col p-6">
+												<hr className="divider my-5 w-full" />
+												<div
+													dangerouslySetInnerHTML={{ __html: review.review.html }}
+													className="prose max-w-none text-sm prose-headings:text-sky-800 prose-a:text-blue-800"
+												/>
+												<hr className="divider my-5 w-full" />
+											</div>
+										</a>
+									</Link>
 								</div>
 							);
 						})}
@@ -209,22 +218,24 @@ const Home = ({ page }) => {
 						{page.blogPosts.map((post) => {
 							return (
 								<div key={post.id}>
-									<div className="block rounded-lg bg-slate-50 shadow-lg">
-										{/* eslint-disable-next-line @next/next/no-img-element */}
-										<img
-											className="h-48 w-full rounded-t-lg object-cover"
-											src={post.coverImage.url}
-											alt={post.title}
-										/>
-										<div className="flex flex-col p-6">
-											<h2 className="font-semibold uppercase text-sky-800 line-clamp-1">
-												{post.title}
-											</h2>
-											<hr className="divider my-5 w-full" />
-											<p className="mt-3 mb-3 line-clamp-3">{post.excerpt}</p>
-											<hr className="divider my-5 w-full" />
-										</div>
-									</div>
+									<Link href={'/blogs'}>
+										<a className="block rounded-lg bg-slate-50 shadow-lg">
+											{/* eslint-disable-next-line @next/next/no-img-element */}
+											<img
+												className="h-48 w-full rounded-t-lg object-cover"
+												src={post.coverImage.url}
+												alt={post.title}
+											/>
+											<div className="flex flex-col p-6">
+												<h2 className="font-semibold uppercase text-sky-800 line-clamp-1">
+													{post.title}
+												</h2>
+												<hr className="divider my-5 w-full" />
+												<p className="mt-3 mb-3 line-clamp-3">{post.excerpt}</p>
+												<hr className="divider my-5 w-full" />
+											</div>
+										</a>
+									</Link>
 								</div>
 							);
 						})}
@@ -232,7 +243,7 @@ const Home = ({ page }) => {
 					<div className="mx-auto mt-10 flex justify-center">
 						<Link href={'/blogs'}>
 							<a className="rounded-lg bg-emerald-700 px-5 py-3 text-center text-sm font-medium uppercase text-white hover:bg-emerald-500">
-								More Blogs
+								Explore Blogs
 							</a>
 						</Link>
 					</div>
