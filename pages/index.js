@@ -252,7 +252,7 @@ const Home = ({ page }) => {
 			{/** blog posts section end */}
 
 			{/** call to action section start */}
-			<section className="bg-slate-100 p-3">
+			<section className="bg-slate-100">
 				<div className="mx-auto max-w-7xl">
 					<div className="m-8 flex flex-col rounded-lg bg-slate-50 shadow-lg lg:flex-row">
 						<div className="order-2 flex h-64 w-full items-center justify-center px-5 py-8 lg:order-1 lg:w-1/2">
