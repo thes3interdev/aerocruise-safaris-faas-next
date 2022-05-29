@@ -12,6 +12,7 @@ const NavigationFooter = () => {
 	const informationLinks = [
 		{ name: 'Blogs', linkDestination: '/blogs' },
 		{ name: 'About', linkDestination: '/about' },
+		{ name: 'Guest Reviews', linkDestination: '/reviews' },
 	];
 	const discoverLinks = [
 		{ name: 'Destinations', linkDestination: '/destinations' },
