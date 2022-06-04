@@ -1,6 +1,10 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { useMutation } from '@apollo/client';
 import client from '../lib/ApolloClient';
 import GET_SUBSCRIPTIONS_PAGE from '../graphql/query/GetSubscriptionsPage';
+import CREATE_SUBSCRIBER from '../graphql/mutation/CreateSubscriber';
 import Meta from '../lib/Meta';
 
 /** fetch data at build time */
@@ -17,9 +21,24 @@ export const getStaticProps = async () => {
 	};
 };
 
-const Subscriptions = ({ page }) => {
-	const handleChange = ({ event }) => {};
-	const handleSubmit = ({ event }) => {};
+const Subscriptions = async ({ page }) => {
+	const [createSubscriber] = await client.mutate({ mutation: CREATE_SUBSCRIBER });
+	const [subscriber, setSubscriber] = useState({});
+
+	const handleChange = (event) => {
+		setSubscriber({ ...subscriber, [event.target.name]: event.target.value });
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		createSubscriber({ variables: { ...subscriber } });
+	};
+
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		router.push('/');
+	// 	}, 5000);
+	// }, [router]);
 
 	return (
 		<div>

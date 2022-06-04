@@ -4,14 +4,14 @@ const CreateSubscriber = gql`
 	mutation CreateSubscriber(
 		$firstName: String!
 		$lastName: String
-		$residency: String!
+		$countryOfResidence: String!
 		$email: String!
 	) {
 		createSubscriber(
 			data: {
 				firstName: $firstName
 				lastName: $lastName
-				countryOfResidence: $residency
+				countryOfResidence: $countryOfResidence
 				email: $email
 			}
 		) {
