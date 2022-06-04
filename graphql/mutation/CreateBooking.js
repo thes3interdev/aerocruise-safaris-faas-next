@@ -6,7 +6,10 @@ const CreateBooking = gql`
 		$duration: String!
 		$travelDate: Date
 		$budget: String!
-		$comments: String
+		$adults: String!
+		$children: String!
+		$infants: String!
+		$comments: String!
 		$firstName: String!
 		$lastName: String
 		$countryOfResidence: String!
@@ -18,6 +21,9 @@ const CreateBooking = gql`
 				duration: $duration
 				travelDate: $travelDate
 				budget: $budget
+				adults: $adults
+				children: $children
+				infants: $infants
 				comments: $comments
 				firstName: $firstName
 				lastName: $lastName
@@ -30,6 +36,9 @@ const CreateBooking = gql`
 			duration
 			travelDate
 			budget
+			adults
+			children
+			infants
 			comments
 			firstName
 			lastName
