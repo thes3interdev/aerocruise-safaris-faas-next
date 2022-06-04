@@ -9,7 +9,7 @@ const CreateBooking = gql`
 		$comments: String
 		$firstName: String!
 		$lastName: String
-		$residency: String!
+		$countryOfResidence: String!
 		$email: String!
 	) {
 		createBooking(
@@ -21,7 +21,7 @@ const CreateBooking = gql`
 				comments: $comments
 				firstName: $firstName
 				lastName: $lastName
-				countryOfResidence: $residency
+				countryOfResidence: $countryOfResidence
 				email: $email
 			}
 		) {
