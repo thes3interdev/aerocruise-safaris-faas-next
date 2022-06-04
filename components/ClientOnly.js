@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 /**
  * To make sure we only request data from the browser,
  * we have to ensure that the components using hooks are
@@ -5,7 +7,6 @@
  * creating a component that only renders its children in
  * the browser and not on the server.
  */
-import { useEffect, useState } from 'react';
 
 const ClientOnly = ({ children, ...delegated }) => {
 	const [hasMounted, setHasMounted] = useState(false);

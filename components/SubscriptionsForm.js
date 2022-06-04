@@ -1,12 +1,97 @@
+import { Fragment, useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useMutation } from '@apollo/client';
+import { Dialog, Transition } from '@headlessui/react';
 import CREATE_SUBSCRIBER from '../graphql/mutation/CreateSubscriber';
 
 const SubscriptionsForm = () => {
-	const handleChange = (e) => {};
-	const handleSubmit = (e) => {};
+	const router = useRouter();
+	const [createSubscriber] = useMutation(CREATE_SUBSCRIBER);
+	const [subscriber, setSubscriber] = useState({});
+	let [isOpen, setIsOpen] = useState(false);
+
+	const handleChange = (e) => {
+		setSubscriber({ ...subscriber, [e.target.name]: e.target.value });
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		createSubscriber({ variables: { ...subscriber } });
+		openModal();
+	};
+
+	const closeModal = () => {
+		setIsOpen(false);
+		router.push('/experiences');
+	};
+
+	const openModal = () => {
+		setIsOpen(true);
+	};
 
 	return (
 		<div>
+			{/** modal start */}
+			<>
+				<Transition appear show={isOpen} as={Fragment}>
+					<Dialog as="div" className="relative z-10" onClose={closeModal}>
+						<Transition.Child
+							as={Fragment}
+							enter="ease-out duration-300"
+							enterFrom="opacity-0"
+							enterTo="opacity-100"
+							leave="ease-in duration-200"
+							leaveFrom="opacity-100"
+							leaveTo="opacity-0"
+						>
+							<div className="fixed inset-0 bg-slate-900 bg-opacity-50" />
+						</Transition.Child>
+
+						<div className="fixed inset-0 overflow-y-auto">
+							<div className="flex min-h-full items-center justify-center p-4 text-center">
+								<Transition.Child
+									as={Fragment}
+									enter="ease-out duration-300"
+									enterFrom="opacity-0 scale-95"
+									enterTo="opacity-100 scale-100"
+									leave="ease-in duration-200"
+									leaveFrom="opacity-100 scale-100"
+									leaveTo="opacity-0 scale-95"
+								>
+									<Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-slate-100 p-6 text-left align-middle shadow-xl transition-all">
+										<Dialog.Title
+											as="h3"
+											className="text-xl font-semibold leading-6 text-sky-800"
+										>
+											Subscription Successful
+										</Dialog.Title>
+										<div className="mt-2">
+											<p className="tracking-wide">
+												We appreciate you for subscribing to our email newsletter. The
+												newsletter will be delivered to you in due time at the email
+												address you provided.
+											</p>
+										</div>
+
+										<div className="mt-4">
+											<button
+												type="button"
+												className="inline-flex justify-center rounded-lg border border-transparent bg-emerald-800 px-4 py-2 text-sm font-medium uppercase text-white hover:bg-emerald-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+												onClick={closeModal}
+											>
+												Ok, Got It!
+											</button>
+										</div>
+									</Dialog.Panel>
+								</Transition.Child>
+							</div>
+						</div>
+					</Dialog>
+				</Transition>
+			</>
+			{/** modal end */}
+
 			{/** subscriptions form start */}
 			<div className="mx-auto max-w-5xl px-8 pb-10">
 				<div className="mx-auto max-w-3xl rounded-lg bg-slate-50 px-4 py-8 shadow-lg sm:px-6 lg:px-8">
@@ -14,12 +99,12 @@ const SubscriptionsForm = () => {
 					<form onSubmit={handleSubmit} className="py-6">
 						<div className="flex flex-col sm:flex-row sm:gap-8">
 							<div className="mb-4 flex-1">
-								<label htmlFor="first_name">
+								<label htmlFor="firstName">
 									First Name<span className="font-bold text-red-600">*</span>
 								</label>
 								<input
 									type="text"
-									name="first_name"
+									name="firstName"
 									className="mt-1 w-full rounded-md border-2 border-gray-100 bg-gray-100 py-3 focus:border-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200 focus:ring-offset-2"
 									placeholder="John"
 									onChange={handleChange}
@@ -27,10 +112,10 @@ const SubscriptionsForm = () => {
 								/>
 							</div>
 							<div className="mb-4 flex-1">
-								<label htmlFor="last_name">Last Name</label>
+								<label htmlFor="lastName">Last Name</label>
 								<input
 									type="text"
-									name="last_name"
+									name="lastName"
 									className="mt-1 w-full rounded-md border-2 border-gray-100 bg-gray-100 py-3 focus:border-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200 focus:ring-offset-2"
 									placeholder="Doe"
 									onChange={handleChange}
@@ -39,11 +124,11 @@ const SubscriptionsForm = () => {
 						</div>
 						<div className="flex flex-col sm:flex-row sm:gap-8">
 							<div className="mb-4 flex-1">
-								<label htmlFor="residency">
+								<label htmlFor="countryOfResidence">
 									Country of Residence<span className="font-bold text-red-600">*</span>
 								</label>
 								<select
-									name="residency"
+									name="countryOfResidence"
 									className="mt-1 w-full rounded-md border-2 border-gray-100 bg-gray-100 py-3 focus:border-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200 focus:ring-offset-2"
 									onChange={handleChange}
 									defaultValue={'DEFAULT'}
