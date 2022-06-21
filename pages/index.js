@@ -129,7 +129,7 @@ const Home = ({ page }) => {
 
 			{/** why travel section start */}
 			<section className="p-3">
-				<div className="mx-auto max-w-7xl transform px-4 pb-8 sm:px-6 lg:mt-24 lg:px-8 lg:pb-16">
+				<div className="mx-auto max-w-7xl transform px-4 pb-8 sm:px-6 lg:mt-24 lg:px-8 lg:pb-8">
 					<div className="mt-8 mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-4xl">
 						<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
 							Why Travel with Aerocruise
@@ -160,6 +160,34 @@ const Home = ({ page }) => {
 				</div>
 			</section>
 			{/** why travel section end */}
+
+			{/** parners section start */}
+			<section className="p-3">
+				<div className="mx-auto max-w-6xl transform px-4 pb-8 sm:px-6 lg:mt-12 lg:px-8 lg:pb-16">
+					<div className="mt-8 mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-4xl">
+						<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
+							Our Partners
+						</h2>
+					</div>
+					<div className="mb-8 grid grid-cols-1 gap-5 lg:grid-cols-5 lg:space-y-0">
+						{page.partners.map((partner) => {
+							return (
+								<div key={partner.id}>
+									<div className="block rounded-lg bg-slate-50 shadow-lg">
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<img
+											className="h-[150px] w-full rounded-t-lg object-cover"
+											src={partner.logo.url}
+											alt={partner.name}
+										/>
+									</div>
+								</div>
+							);
+						})}
+					</div>
+				</div>
+			</section>
+			{/** partners section end */}
 
 			{/** guest reviews section start */}
 			<section className="bg-slate-100 p-3">

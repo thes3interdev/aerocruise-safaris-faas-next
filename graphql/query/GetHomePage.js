@@ -53,6 +53,13 @@ const GetHomePage = gql`
 				}
 				excerpt
 			}
+			partners {
+				id
+				name
+				logo {
+					url
+				}
+			}
 			callToAction {
 				prompt
 				coverImage {
