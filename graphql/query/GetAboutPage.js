@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 const GetAboutPage = gql`
 	query GetAboutPage {
-		informationPage(where: { pageTitle: "About Page" }) {
+		aboutPage(where: { pageTitle: "About Page" }) {
 			heroSection {
 				heroImage {
 					url

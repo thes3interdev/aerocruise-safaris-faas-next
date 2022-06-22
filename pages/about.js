@@ -11,7 +11,7 @@ export const getStaticProps = async () => {
 
 	return {
 		props: {
-			page: page.informationPage,
+			page: page.aboutPage,
 		},
 		revalidate: 34,
 	};
