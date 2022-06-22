@@ -161,7 +161,7 @@ const Home = ({ page }) => {
 			</section>
 			{/** why travel section end */}
 
-			{/** parners section start */}
+			{/** partners section start */}
 			<section className="p-3">
 				<div className="mx-auto max-w-6xl transform px-4 pb-8 sm:px-6 lg:mt-12 lg:px-8 lg:pb-16">
 					<div className="mt-8 mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-4xl">
@@ -169,14 +169,14 @@ const Home = ({ page }) => {
 							Our Partners
 						</h2>
 					</div>
-					<div className="mb-8 grid grid-cols-1 gap-5 lg:grid-cols-5 lg:space-y-0">
+					<div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-4 lg:space-y-0">
 						{page.partners.map((partner) => {
 							return (
 								<div key={partner.id}>
 									<div className="block rounded-lg bg-slate-50 shadow-lg">
 										{/* eslint-disable-next-line @next/next/no-img-element */}
 										<img
-											className="h-[150px] w-full rounded-t-lg object-cover"
+											className="h-[289px] w-full rounded-lg object-cover lg:h-[189px]"
 											src={partner.logo.url}
 											alt={partner.name}
 										/>
@@ -280,7 +280,7 @@ const Home = ({ page }) => {
 			{/** blog posts section end */}
 
 			{/** call to action section start */}
-			<section className="bg-slate-100">
+			<section className="bg-slate-100 p-3">
 				<div className="mx-auto max-w-7xl">
 					<div className="m-8 flex flex-col rounded-lg bg-slate-50 shadow-lg lg:flex-row">
 						<div className="order-2 flex h-64 w-full items-center justify-center px-5 py-8 lg:order-1 lg:w-1/2">
