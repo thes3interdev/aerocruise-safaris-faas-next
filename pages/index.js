@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { format, parseISO } from 'date-fns';
 import client from '../lib/ApolloClient';
 import GET_HOME_PAGE from '../graphql/query/GetHomePage';
 import Meta from '../lib/Meta';
@@ -12,7 +11,7 @@ export const getStaticProps = async () => {
 
 	return {
 		props: {
-			page: page.marketingPages[0],
+			page: page.homePage,
 		},
 		revalidate: 34,
 	};

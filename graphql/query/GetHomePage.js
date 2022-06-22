@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 const GetHomePage = gql`
 	query GetHomePage {
-		marketingPages(where: { pageTitle: "Home Page" }) {
+		homePage(where: { pageTitle: "Home Page" }) {
 			heroSection {
 				heroImage {
 					url
