@@ -3,7 +3,7 @@ import client from '../lib/ApolloClient';
 import GET_ABOUT_PAGE from '../graphql/query/GetAboutPage';
 import Meta from '../lib/Meta';
 import ClientOnly from '../components/ClientOnly';
-import ContactForm from '../components/ContactForm';
+import MessageForm from '../components/MessageForm';
 
 /** fetch data at build time */
 export const getStaticProps = async () => {
@@ -160,12 +160,26 @@ const About = ({ page }) => {
 						})}
 					</ul>
 				</div>
+				<hr className="divider my-10 w-full" />
 			</section>
 			{/** section team end */}
 
+			{/** section message start */}
+			<section className="mx-auto max-w-5xl px-8 pt-5">
+				<div className="mb-10 max-w-xl sm:text-center md:mx-auto lg:max-w-4xl">
+					<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
+						<span className="relative inline-block">
+							<span className="relative">{page.messageHeader.title}</span>
+						</span>
+					</h2>
+					<p className="text-base md:text-lg">{page.messageHeader.subtitle}</p>
+				</div>
+			</section>
+			{/** section message end */}
+
 			{/** booking request form start */}
 			<ClientOnly>
-				<ContactForm />
+				<MessageForm />
 			</ClientOnly>
 			{/** booking request form end */}
 

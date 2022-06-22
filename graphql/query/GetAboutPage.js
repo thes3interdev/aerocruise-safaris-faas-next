@@ -38,6 +38,10 @@ const GetAboutPage = gql`
 					url
 				}
 			}
+			messageHeader {
+				title
+				subtitle
+			}
 			callToAction {
 				prompt
 				coverImage {
