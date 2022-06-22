@@ -2,6 +2,8 @@ import Link from 'next/link';
 import client from '../lib/ApolloClient';
 import GET_ABOUT_PAGE from '../graphql/query/GetAboutPage';
 import Meta from '../lib/Meta';
+import ClientOnly from '../components/ClientOnly';
+import ContactForm from '../components/ContactForm';
 
 /** fetch data at build time */
 export const getStaticProps = async () => {
@@ -81,11 +83,12 @@ const About = ({ page }) => {
 					</h2>
 					<p className="text-base md:text-lg">{page.headerSection.subtitle}</p>
 				</div>
+				<hr className="divider my-10 w-full" />
 			</section>
 			{/** header section end */}
 
 			{/** section services start */}
-			<section className="mx-auto max-w-5xl px-8 pt-10">
+			<section className="mx-auto max-w-5xl px-8 pt-5">
 				<div className="mb-10 max-w-xl sm:text-center md:mx-auto lg:max-w-4xl">
 					<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
 						<span className="relative inline-block">
@@ -117,9 +120,54 @@ const About = ({ page }) => {
 						))}
 					</ul>
 				</div>
-				<hr className="divider mt-20 w-full" />
+				<hr className="divider my-10 w-full" />
 			</section>
 			{/** section services end */}
+
+			{/** section team start */}
+			<section className="mx-auto max-w-5xl px-8 pt-5">
+				<div className="mb-10 max-w-xl sm:text-center md:mx-auto lg:max-w-4xl">
+					<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
+						<span className="relative inline-block">
+							<span className="relative">{page.ourTeamHeader.title}</span>
+						</span>
+					</h2>
+					<p className="text-base md:text-lg">{page.ourTeamHeader.subtitle}</p>
+				</div>
+				<div className="">
+					<ul className="grid grid-cols-1 gap-5 py-5 text-sky-800 sm:grid-cols-3">
+						{page.aerocruiseSafarisTeam.map((member) => {
+							return (
+								<div key={member.id}>
+									<div className="overflow-hidden rounded-lg bg-slate-50 shadow-lg transition-shadow duration-300">
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<img
+											src={member.photo.url}
+											className="h-64 w-full bg-center object-cover object-top"
+											alt={member.name}
+										/>
+										<div className="border border-t-0 p-5">
+											<div className="text-center">
+												<h2 className="font-semibold uppercase text-sky-800">
+													{member.name}
+												</h2>
+												<p className="font-medium">{member.title}</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							);
+						})}
+					</ul>
+				</div>
+			</section>
+			{/** section team end */}
+
+			{/** booking request form start */}
+			<ClientOnly>
+				<ContactForm />
+			</ClientOnly>
+			{/** booking request form end */}
 
 			{/** call to action section start */}
 			<section className="mx-auto max-w-7xl">

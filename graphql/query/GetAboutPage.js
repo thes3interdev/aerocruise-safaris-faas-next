@@ -26,6 +26,18 @@ const GetAboutPage = gql`
 					html
 				}
 			}
+			ourTeamHeader {
+				title
+				subtitle
+			}
+			aerocruiseSafarisTeam {
+				id
+				name
+				title
+				photo {
+					url
+				}
+			}
 			callToAction {
 				prompt
 				coverImage {
