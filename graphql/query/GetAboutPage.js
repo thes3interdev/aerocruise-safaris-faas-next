@@ -15,6 +15,17 @@ const GetAboutPage = gql`
 				title
 				subtitle
 			}
+			ourServicesHeader {
+				title
+				subtitle
+			}
+			ourServicesList {
+				id
+				title
+				description {
+					html
+				}
+			}
 			callToAction {
 				prompt
 				coverImage {

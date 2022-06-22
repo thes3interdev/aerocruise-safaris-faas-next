@@ -45,7 +45,7 @@ const About = ({ page }) => {
 			{/** hero section end */}
 
 			{/** header section start */}
-			<section className="mx-auto max-w-4xl px-8 pt-10">
+			<section className="mx-auto max-w-5xl px-8 pt-10">
 				<div className="mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-4xl">
 					<div>
 						<p className="mb-4 inline-block rounded-full bg-emerald-800 px-3 py-px text-xs font-semibold uppercase tracking-wider text-slate-100">
@@ -84,9 +84,42 @@ const About = ({ page }) => {
 			</section>
 			{/** header section end */}
 
-			{/** blog grid section start */}
-
-			{/** blog grid section end */}
+			{/** section services start */}
+			<section className="mx-auto max-w-5xl px-8 pt-10">
+				<div className="mb-10 max-w-xl sm:text-center md:mx-auto lg:max-w-4xl">
+					<h2 className="mb-6 max-w-lg text-3xl font-bold leading-none tracking-tight text-sky-800 sm:text-4xl md:mx-auto">
+						<span className="relative inline-block">
+							<span className="relative">{page.ourServicesHeader.title}</span>
+						</span>
+					</h2>
+					<p className="text-base md:text-lg">{page.ourServicesHeader.subtitle}</p>
+				</div>
+				<div className="">
+					<ul className="grid grid-cols-1 gap-5 py-5 text-sky-800 sm:grid-cols-3">
+						{page.ourServicesList.map((item) => (
+							<li
+								key={item.id}
+								className="flex flex-col rounded-lg bg-slate-50 p-4 shadow-lg"
+							>
+								<div className="text-lg font-semibold uppercase text-sky-800">
+									{item.title}
+								</div>
+								<hr className="divider my-5 w-full" />
+								<article className="mt-2 mb-2 ">
+									<p
+										dangerouslySetInnerHTML={{
+											__html: item.description.html,
+										}}
+										className="prose max-w-none prose-headings:text-sky-800 prose-a:text-blue-800"
+									/>
+								</article>
+							</li>
+						))}
+					</ul>
+				</div>
+				<hr className="divider mt-20 w-full" />
+			</section>
+			{/** section services end */}
 
 			{/** call to action section start */}
 			<section className="mx-auto max-w-7xl">
